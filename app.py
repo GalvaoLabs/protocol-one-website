@@ -1,796 +1,860 @@
-"""
-Protocol One — ProtoCommunity
-Site de apresentação institucional, construído em Streamlit (Python puro).
-
-Para rodar localmente:
-
-    pip install -r requirements.txt
-    streamlit run app.py
-
-Para hospedar de graça, veja o README.md (Streamlit Community Cloud).
-"""
-
 import streamlit as st
 
-
 # ============================================================
-# CONFIGURAÇÃO DA PÁGINA
+# CONFIGURAÇÃO
 # ============================================================
 
 st.set_page_config(
     page_title="Protocol One — ProtoCommunity",
-    page_icon="logo.png",
+    page_icon="◈",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-
 # ============================================================
-# ESTILO
-# Identidade visual:
-# papel kraft + tinta escura + verde-pinho + vermelho de carimbo
+# CSS
 # ============================================================
 
-CSS = """
-<style>
+st.markdown(
+    """
+    <style>
 
-@import url(
-    'https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800'
-    '&family=Space+Grotesk:wght@400;500;600;700'
-    '&family=Caveat:wght@600;700&display=swap'
-);
+    @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-:root{
-    --paper:#EFE7D8;
-    --paper-dim:#E3D7BF;
-    --ink:#201F2C;
-    --ink-soft:#57536A;
-    --pine:#2F5D50;
-    --pine-deep:#1F4038;
-    --stamp:#B23A2E;
-    --line:rgba(32,31,44,0.16);
-    --line-strong:rgba(32,31,44,0.32);
-}
+    /* ========================================================
+       PALETA
+       ======================================================== */
 
+    :root {
+        --paper: #F7F6F2;
+        --paper-soft: #EEECE5;
+        --paper-card: #FFFFFF;
 
-/* ============================================================
-   BASE
-   ============================================================ */
+        --ink: #18272C;
+        --ink-soft: #59676C;
+        --ink-faint: #879297;
 
-html,
-body,
-[data-testid="stAppViewContainer"] {
-    background:var(--paper);
-}
+        --navy: #173F4A;
+        --navy-deep: #102F38;
 
-[data-testid="stHeader"]{
-    background:transparent;
-}
+        --teal: #39757A;
+        --teal-dark: #285B61;
+        --teal-soft: #DCEBEC;
 
-[data-testid="stAppViewContainer"]{
-    overflow-x:hidden;
-}
+        --gold: #C6A263;
+        --gold-soft: #EFE4CF;
 
-.main{
-    background:var(--paper);
-}
+        --line: rgba(24, 39, 44, 0.12);
+        --line-strong: rgba(24, 39, 44, 0.24);
 
-html,
-body,
-[class*="css"]{
-    font-family:'Space Grotesk', sans-serif;
-    color:var(--ink);
-}
-
-.block-container{
-    width:100%;
-    max-width:1180px;
-    padding-top:2rem;
-    padding-bottom:3rem;
-    padding-left:clamp(1rem, 4vw, 2.5rem);
-    padding-right:clamp(1rem, 4vw, 2.5rem);
-}
-
-
-/* ============================================================
-   TIPOGRAFIA
-   ============================================================ */
-
-h1,
-h2,
-h3,
-.display{
-    font-family:'Big Shoulders Display', sans-serif !important;
-    text-transform:uppercase;
-    letter-spacing:0.01em;
-    font-weight:700 !important;
-    color:var(--ink);
-}
-
-.hero-title{
-    font-family:'Big Shoulders Display', sans-serif;
-    font-size:64px;
-    line-height:0.98;
-    text-transform:uppercase;
-    letter-spacing:0.01em;
-    font-weight:700;
-    color:var(--ink);
-    margin:0 0 18px 0;
-}
-
-.page-title{
-    font-family:'Big Shoulders Display', sans-serif;
-    font-size:48px;
-    line-height:1;
-    text-transform:uppercase;
-    letter-spacing:0.01em;
-    font-weight:700;
-    color:var(--ink);
-    margin:0 0 16px 0;
-}
-
-.section-title{
-    font-family:'Big Shoulders Display', sans-serif;
-    font-size:38px;
-    line-height:1;
-    text-transform:uppercase;
-    font-weight:700;
-    color:var(--ink);
-    margin:0 0 18px 0;
-}
-
-.subsection-title{
-    font-family:'Big Shoulders Display', sans-serif;
-    font-size:32px;
-    line-height:1;
-    text-transform:uppercase;
-    font-weight:700;
-    color:var(--ink);
-    margin:0 0 14px 0;
-}
-
-.hand{
-    font-family:'Caveat', cursive;
-    font-weight:700;
-    color:var(--stamp);
-}
-
-
-/* ============================================================
-   SIDEBAR
-   ============================================================ */
-
-[data-testid="stSidebar"]{
-    background:var(--ink);
-    color:var(--paper);
-}
-
-[data-testid="stSidebar"] *{
-    color:var(--paper) !important;
-}
-
-[data-testid="stSidebar"] a{
-    text-decoration:none;
-}
-
-.sidebar-brand{
-    font-family:'Big Shoulders Display', sans-serif;
-    font-size:24px;
-    font-weight:800;
-    letter-spacing:0.02em;
-}
-
-.sidebar-subtitle{
-    font-size:12px;
-    opacity:0.7;
-    margin-top:4px;
-}
-
-.sidebar-divider{
-    border:none;
-    border-top:1px solid rgba(239,231,216,0.2);
-    margin:18px 0;
-}
-
-
-/* ============================================================
-   COMPONENTES GERAIS
-   ============================================================ */
-
-.frame-tab{
-    display:inline-block;
-    max-width:100%;
-    background:var(--ink);
-    color:var(--paper) !important;
-    font-family:'Caveat', cursive;
-    font-weight:700;
-    font-size:19px;
-    line-height:1.2;
-    padding:4px 18px 6px;
-    border-radius:0 0 8px 8px;
-    margin-bottom:18px;
-}
-
-.intro-text{
-    font-size:19px;
-    color:var(--ink-soft);
-    max-width:70ch;
-    line-height:1.55;
-}
-
-.body-text{
-    line-height:1.7;
-}
-
-.muted-text{
-    color:var(--ink-soft);
-}
-
-.narrow-text{
-    max-width:70ch;
-}
-
-.rule{
-    border:none;
-    border-top:1px solid var(--line-strong);
-    margin:36px 0;
-}
-
-
-/* ============================================================
-   MÉTRICAS
-   ============================================================ */
-
-.stats-grid{
-    display:grid;
-    grid-template-columns:repeat(4, minmax(0, 1fr));
-    gap:1px;
-    background:var(--line-strong);
-    border:1px solid var(--line-strong);
-    margin-top:28px;
-}
-
-.stat{
-    background:var(--paper);
-    padding:20px 18px;
-    min-width:0;
-}
-
-.stat-label{
-    font-size:12px;
-    color:var(--ink-soft);
-    line-height:1.35;
-    margin-bottom:6px;
-}
-
-.stat-value{
-    font-family:'Big Shoulders Display', sans-serif;
-    font-size:32px;
-    line-height:1;
-    font-weight:700;
-    color:var(--ink);
-}
-
-
-/* ============================================================
-   CHIPS
-   ============================================================ */
-
-.chip-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:8px;
-}
-
-.chip{
-    border:1px solid var(--line-strong);
-    padding:8px 14px;
-    font-size:13px;
-    font-weight:600;
-    background:var(--paper-dim);
-    border-radius:2px;
-    max-width:100%;
-}
-
-
-/* ============================================================
-   GRIDS
-   ============================================================ */
-
-.grid-4{
-    display:grid;
-    grid-template-columns:repeat(4, minmax(0, 1fr));
-    gap:1px;
-    background:var(--line-strong);
-    border:1px solid var(--line-strong);
-    margin-top:10px;
-}
-
-.grid-3{
-    display:grid;
-    grid-template-columns:repeat(3, minmax(0, 1fr));
-    gap:1px;
-    background:var(--line-strong);
-    border:1px solid var(--line-strong);
-    margin-top:10px;
-}
-
-.grid-2{
-    display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:20px;
-    margin-top:10px;
-}
-
-
-/* ============================================================
-   NÚCLEOS / CÉLULAS
-   ============================================================ */
-
-.cell{
-    background:var(--paper);
-    padding:22px 20px;
-    min-height:150px;
-    min-width:0;
-}
-
-.cell .index{
-    font-family:'Big Shoulders Display', sans-serif;
-    font-size:14px;
-    color:var(--stamp);
-    font-weight:700;
-}
-
-.cell h4{
-    font-size:18px;
-    line-height:1.2;
-    margin:8px 0 6px;
-    text-transform:none;
-    font-weight:700;
-    overflow-wrap:anywhere;
-}
-
-.cell p{
-    font-size:13.5px;
-    color:var(--ink-soft);
-    line-height:1.5;
-    margin:0;
-    overflow-wrap:anywhere;
-}
-
-
-/* ============================================================
-   CARDS DE LIDERANÇA
-   ============================================================ */
-
-.card{
-    border:1.5px solid var(--ink);
-    background:var(--paper-dim);
-    padding:20px 22px;
-    border-radius:2px;
-    min-width:0;
-}
-
-.card h4{
-    font-size:13px;
-    line-height:1.25;
-    text-transform:uppercase;
-    letter-spacing:0.06em;
-    font-weight:700;
-    color:var(--pine);
-    margin:0 0 14px;
-    padding-bottom:10px;
-    border-bottom:1px solid var(--line-strong);
-    overflow-wrap:anywhere;
-}
-
-.role-row{
-    display:flex;
-    align-items:flex-start;
-    gap:10px;
-    padding:9px 0;
-    border-top:1px dashed var(--line-strong);
-    font-size:13.5px;
-    line-height:1.4;
-    min-width:0;
-}
-
-.role-row:first-of-type{
-    border-top:none;
-}
-
-.role-row span{
-    overflow-wrap:anywhere;
-}
-
-
-/* ============================================================
-   PILARES
-   ============================================================ */
-
-.pillars-grid{
-    display:grid;
-    grid-template-columns:repeat(3, minmax(0, 1fr));
-    gap:1px;
-    background:var(--line-strong);
-    border:1px solid var(--line-strong);
-    margin-top:10px;
-}
-
-
-/* ============================================================
-   OBJETIVOS
-   ============================================================ */
-
-.obj-card{
-    background:var(--paper);
-    border:1.5px solid var(--line-strong);
-    padding:22px 20px;
-    border-radius:2px;
-    min-width:0;
-}
-
-.obj-card .num{
-    font-family:'Big Shoulders Display', sans-serif;
-    font-size:30px;
-    color:var(--ink-soft);
-    font-weight:700;
-}
-
-.obj-card h4{
-    font-size:18px;
-    line-height:1.2;
-    margin:8px 0 6px;
-    text-transform:none;
-    font-weight:700;
-    overflow-wrap:anywhere;
-}
-
-.obj-card p{
-    font-size:13.5px;
-    color:var(--ink-soft);
-    line-height:1.5;
-    margin:0;
-    overflow-wrap:anywhere;
-}
-
-
-/* ============================================================
-   PIPELINE
-   ============================================================ */
-
-.filmstrip{
-    display:grid;
-    grid-template-columns:repeat(7, minmax(0, 1fr));
-    border:1.5px solid var(--ink);
-    margin-top:10px;
-    min-width:0;
-}
-
-.film-cell{
-    padding:18px 16px;
-    background:var(--paper);
-    border-right:1px dashed var(--line-strong);
-    min-width:0;
-}
-
-.film-cell:last-child{
-    border-right:none;
-}
-
-.film-cell .fnum{
-    font-family:'Caveat', cursive;
-    color:var(--stamp);
-    font-size:19px;
-    font-weight:700;
-}
-
-.film-cell h5{
-    font-size:15px;
-    line-height:1.25;
-    margin:4px 0 4px;
-    font-weight:700;
-    overflow-wrap:anywhere;
-}
-
-.film-cell p{
-    font-size:12px;
-    color:var(--ink-soft);
-    margin:0;
-    line-height:1.4;
-    overflow-wrap:anywhere;
-}
-
-
-/* ============================================================
-   PARTICIPE
-   ============================================================ */
-
-.join-grid{
-    display:grid;
-    grid-template-columns:repeat(3, minmax(0, 1fr));
-    gap:16px;
-    margin-top:10px;
-}
-
-.join-card{
-    background:var(--ink);
-    color:var(--paper) !important;
-    padding:22px 20px;
-    border-radius:2px;
-    min-width:0;
-}
-
-.join-card h4{
-    font-size:19px;
-    line-height:1.2;
-    text-transform:none;
-    color:var(--paper) !important;
-    margin:0 0 6px;
-    font-weight:700;
-}
-
-.join-card p{
-    font-size:13.5px;
-    color:rgba(239,231,216,0.75) !important;
-    margin:0;
-    line-height:1.5;
-    overflow-wrap:anywhere;
-}
-
-
-/* ============================================================
-   BOTÕES / CANAIS
-   ============================================================ */
-
-.channels{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:10px;
-}
-
-a.channel-btn{
-    display:inline-block;
-    border:1.5px solid var(--ink);
-    padding:10px 20px;
-    text-decoration:none;
-    font-weight:700;
-    font-size:13px;
-    letter-spacing:0.03em;
-    text-transform:uppercase;
-    color:var(--ink) !important;
-    border-radius:2px;
-    max-width:100%;
-    overflow-wrap:anywhere;
-}
-
-.contact-email{
-    font-size:22px;
-    font-weight:700;
-    overflow-wrap:anywhere;
-    word-break:break-word;
-}
-
-
-/* ============================================================
-   TABLET
-   ============================================================ */
-
-@media (max-width: 1000px){
-
-    .stats-grid{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
+        --shadow: 0 10px 30px rgba(16, 47, 56, 0.07);
+        --shadow-hover: 0 14px 34px rgba(16, 47, 56, 0.11);
     }
 
-    .grid-4{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
+    /* ========================================================
+       BASE
+       ======================================================== */
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
     }
 
-    .filmstrip{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
     }
 
-    .film-cell{
-        border-right:none;
-        border-bottom:1px dashed var(--line-strong);
+    body {
+        background: var(--paper);
     }
 
-    .film-cell:nth-child(odd){
-        border-right:1px dashed var(--line-strong);
+    [data-testid="stAppViewContainer"],
+    [data-testid="stAppViewContainer"] > .main,
+    .main {
+        background: var(--paper);
     }
 
-    .film-cell:nth-last-child(-n+2){
-        border-bottom:none;
+    .block-container {
+        width: 100%;
+        max-width: 1280px;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+        padding-left: clamp(1rem, 4vw, 3rem);
+        padding-right: clamp(1rem, 4vw, 3rem);
+        overflow-x: hidden;
     }
 
-}
-
-
-/* ============================================================
-   MOBILE
-   ============================================================ */
-
-@media (max-width: 700px){
-
-    .block-container{
-        padding-top:1.2rem;
-        padding-bottom:2rem;
-        padding-left:1rem;
-        padding-right:1rem;
+    html,
+    body,
+    [class*="css"] {
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--ink);
     }
 
-    .hero-title{
-        font-size:42px;
-        line-height:0.98;
-        margin-bottom:14px;
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: "Big Shoulders Display", sans-serif !important;
+        color: var(--ink) !important;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
     }
 
-    .page-title{
-        font-size:38px;
-        line-height:1;
+    p {
+        color: var(--ink-soft);
     }
 
-    .section-title{
-        font-size:31px;
+    /* ========================================================
+       SIDEBAR
+       ======================================================== */
+
+    section[data-testid="stSidebar"] {
+        background:
+            linear-gradient(
+                180deg,
+                var(--navy-deep) 0%,
+                #143841 100%
+            );
+        border-right: 1px solid rgba(255, 255, 255, 0.07);
     }
 
-    .subsection-title{
-        font-size:28px;
+    section[data-testid="stSidebar"] * {
+        color: #F4F7F5 !important;
     }
 
-    .intro-text{
-        font-size:16px;
-        line-height:1.55;
+    .sidebar-logo {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 38px;
+        line-height: 0.88;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: #FFFFFF;
+        margin-bottom: 0.3rem;
     }
 
-    .frame-tab{
-        font-size:17px;
-        padding:4px 14px 6px;
-        margin-bottom:14px;
+    .sidebar-subtitle {
+        color: #AFC7CA !important;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
     }
 
-    .stats-grid{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-        margin-top:22px;
+    .sidebar-label {
+        color: #8FAEB2 !important;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin: 1.5rem 0 0.65rem;
     }
 
-    .stat{
-        padding:16px 14px;
+    .sidebar-email {
+        color: #C9D7D9 !important;
+        font-size: 12px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
 
-    .stat-label{
-        font-size:11px;
+    /* ========================================================
+       TÍTULOS
+       ======================================================== */
+
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--teal);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-bottom: 0.9rem;
     }
 
-    .stat-value{
-        font-size:28px;
+    .eyebrow::before {
+        content: "";
+        width: 24px;
+        height: 2px;
+        background: var(--gold);
+        display: inline-block;
+        flex-shrink: 0;
     }
+
+    .hero-title {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 68px;
+        line-height: 0.92;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        text-transform: uppercase;
+        color: var(--ink);
+        max-width: 920px;
+        margin-bottom: 1.25rem;
+        overflow-wrap: anywhere;
+    }
+
+    .section-title-lg {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 50px;
+        line-height: 0.95;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--ink);
+        margin-bottom: 1rem;
+        overflow-wrap: anywhere;
+    }
+
+    .section-title {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 36px;
+        line-height: 1;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--ink);
+        margin-bottom: 0.8rem;
+        overflow-wrap: anywhere;
+    }
+
+    .lead {
+        font-size: 19px;
+        line-height: 1.65;
+        max-width: 850px;
+        color: var(--ink-soft);
+    }
+
+    .body-copy {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--ink-soft);
+    }
+
+    .frame-tab {
+        display: inline-block;
+        max-width: 100%;
+        padding: 7px 11px;
+        margin-bottom: 1rem;
+        border: 1px solid var(--line-strong);
+        border-radius: 4px;
+        color: var(--teal);
+        background: rgba(255, 255, 255, 0.55);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        overflow-wrap: anywhere;
+    }
+
+    .accent-line {
+        width: 72px;
+        height: 4px;
+        background: var(--gold);
+        margin: 1.5rem 0 2rem;
+    }
+
+    .rule {
+        height: 1px;
+        width: 100%;
+        background: var(--line);
+        margin: 3rem 0;
+    }
+
+    /* ========================================================
+       GRIDS
+       ======================================================== */
 
     .grid-4,
     .grid-3,
-    .grid-2,
-    .pillars-grid,
-    .join-grid{
-        grid-template-columns:1fr;
+    .grid-2 {
+        display: grid;
+        width: 100%;
+        gap: 14px;
+        min-width: 0;
     }
 
-    .grid-4,
-    .grid-3{
-        gap:1px;
+    .grid-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .cell{
-        min-height:auto;
-        padding:20px 18px;
+    .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .card{
-        padding:18px;
+    .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .role-row{
-        font-size:13px;
-        padding:10px 0;
+    /* ========================================================
+       CARDS
+       ======================================================== */
+
+    .cell,
+    .card,
+    .obj-card,
+    .join-card,
+    .film-cell,
+    .stat {
+        min-width: 0;
+        overflow-wrap: anywhere;
+        word-break: normal;
     }
 
-    .obj-card{
-        padding:20px 18px;
+    .cell {
+        min-height: 180px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.62);
+        transition:
+            transform 0.2s ease,
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
     }
 
-    .filmstrip{
-        grid-template-columns:1fr;
+    .cell:hover {
+        transform: translateY(-2px);
+        border-color: rgba(57, 117, 122, 0.35);
+        box-shadow: var(--shadow);
     }
 
-    .film-cell{
-        border-right:none !important;
-        border-bottom:1px dashed var(--line-strong);
-        padding:17px 15px;
+    .cell-number {
+        color: var(--gold);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        margin-bottom: 2rem;
     }
 
-    .film-cell:last-child{
-        border-bottom:none;
+    .cell-title {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 23px;
+        line-height: 1;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--ink);
+        margin-bottom: 0.65rem;
     }
 
-    .join-card{
-        padding:20px 18px;
+    .cell-text {
+        color: var(--ink-soft);
+        font-size: 13px;
+        line-height: 1.55;
     }
 
-    .channels{
-        flex-direction:column;
-        align-items:stretch;
+    .card {
+        min-height: 190px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        background: var(--paper-card);
+        box-shadow: var(--shadow);
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
     }
 
-    a.channel-btn{
-        width:100%;
-        text-align:center;
-        box-sizing:border-box;
-        margin:0;
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
     }
 
-    .contact-email{
-        font-size:18px;
+    .card h3 {
+        margin: 0 0 0.75rem;
+        font-size: 25px;
     }
 
-    hr.rule{
-        margin:28px 0;
+    .card p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.6;
     }
 
-}
+    /* ========================================================
+       CHIPS / BADGES
+       ======================================================== */
 
-
-/* ============================================================
-   MOBILE MUITO PEQUENO
-   ============================================================ */
-
-@media (max-width: 400px){
-
-    .block-container{
-        padding-left:0.8rem;
-        padding-right:0.8rem;
+    .chip-row,
+    .role-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 1rem;
+        min-width: 0;
     }
 
-    .hero-title{
-        font-size:36px;
+    .chip,
+    .pill,
+    .badge {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        word-break: normal;
     }
 
-    .page-title{
-        font-size:34px;
+    .chip {
+        display: inline-block;
+        padding: 8px 11px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper-card);
+        color: var(--ink-soft);
+        font-size: 12px;
+        line-height: 1.25;
     }
 
-    .section-title{
-        font-size:28px;
+    .chip:hover {
+        border-color: rgba(57, 117, 122, 0.3);
     }
 
-    .stats-grid{
-        grid-template-columns:1fr;
+    .badge {
+        display: inline-block;
+        padding: 6px 9px;
+        border-radius: 4px;
+        background: var(--teal-soft);
+        border: 1px solid rgba(57, 117, 122, 0.18);
+        color: var(--teal);
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
     }
 
-    .stat{
-        padding:15px 14px;
+    .pill {
+        display: inline-block;
+        padding: 7px 10px;
+        border: 1px solid var(--line);
+        background: var(--paper-card);
+        color: var(--ink-soft);
+        border-radius: 999px;
+        font-size: 11px;
     }
 
-    .stat-value{
-        font-size:26px;
+    /* ========================================================
+       OBJETIVOS
+       ======================================================== */
+
+    .obj-card {
+        padding: 25px;
+        min-height: 210px;
+        background:
+            linear-gradient(
+                145deg,
+                var(--navy) 0%,
+                var(--teal-dark) 100%
+            );
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        color: white;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow);
     }
 
-    .chip{
-        width:100%;
-        box-sizing:border-box;
-        text-align:left;
+    .obj-card::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 50%;
+        right: -34px;
+        bottom: -40px;
     }
 
-}
+    .obj-number {
+        color: var(--gold);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        margin-bottom: 2rem;
+    }
 
-</style>
-"""
+    .obj-title {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 25px;
+        line-height: 1;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        margin-bottom: 0.8rem;
+    }
 
-st.markdown(CSS, unsafe_allow_html=True)
+    .obj-text {
+        color: #DCE7E8;
+        font-size: 13px;
+        line-height: 1.6;
+    }
 
+    /* ========================================================
+       PIPELINE
+       ======================================================== */
+
+    .filmstrip {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+    }
+
+    .film-cell {
+        min-height: 190px;
+        padding: 17px;
+        background: var(--paper-card);
+        border: 1px solid var(--line);
+        position: relative;
+        box-shadow: 0 4px 15px rgba(16, 47, 56, 0.025);
+    }
+
+    .film-cell::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 5px;
+        background: var(--gold-soft);
+        margin-bottom: 20px;
+    }
+
+    .film-number {
+        font-size: 10px;
+        color: var(--teal);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        margin-bottom: 1.3rem;
+    }
+
+    .film-title {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 21px;
+        line-height: 1;
+        text-transform: uppercase;
+        color: var(--ink);
+        margin-bottom: 0.7rem;
+    }
+
+    .film-text {
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--ink-soft);
+    }
+
+    /* ========================================================
+       ESTATÍSTICAS
+       ======================================================== */
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 2.2rem;
+        width: 100%;
+    }
+
+    .stat {
+        padding: 19px;
+        border-top: 2px solid var(--teal);
+        background: rgba(255, 255, 255, 0.62);
+    }
+
+    .stat-value {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 38px;
+        line-height: 0.9;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 0.7rem;
+    }
+
+    .stat-label {
+        color: var(--ink-soft);
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        line-height: 1.4;
+    }
+
+    /* ========================================================
+       PARTICIPE
+       ======================================================== */
+
+    .join-card {
+        padding: 28px;
+        min-height: 215px;
+        border: 1px solid var(--line);
+        background: var(--paper-card);
+        box-shadow: var(--shadow);
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .join-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .join-symbol {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 40px;
+        color: var(--gold);
+        line-height: 1;
+        margin-bottom: 1.2rem;
+    }
+
+    .join-title {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 29px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--ink);
+        margin-bottom: 0.7rem;
+    }
+
+    .join-text {
+        font-size: 13px;
+        line-height: 1.65;
+        color: var(--ink-soft);
+    }
+
+    /* ========================================================
+       LINKS
+       ======================================================== */
+
+    .channel-btn {
+        display: inline-block;
+        max-width: 100%;
+        margin: 4px 5px 4px 0;
+        padding: 11px 15px;
+        border: 1px solid var(--line-strong);
+        border-radius: 4px;
+        background: var(--paper-card);
+        color: var(--navy) !important;
+        text-decoration: none !important;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        transition:
+            background 0.2s ease,
+            color 0.2s ease,
+            border-color 0.2s ease;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .channel-btn:hover {
+        background: var(--navy);
+        color: #FFFFFF !important;
+        border-color: var(--navy);
+    }
+
+    .contact-box {
+        padding: 20px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.55);
+        margin-top: 1.2rem;
+    }
+
+    .contact-label {
+        color: var(--teal);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        margin-bottom: 0.45rem;
+    }
+
+    .contact-email {
+        color: var(--ink);
+        font-size: 15px;
+        font-weight: 600;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    /* ========================================================
+       STREAMLIT
+       ======================================================== */
+
+    [data-testid="stHorizontalBlock"],
+    [data-testid="stMarkdownContainer"] {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    /* ========================================================
+       TABLET
+       ======================================================== */
+
+    @media (max-width: 1100px) {
+
+        .grid-4 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .filmstrip {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    /* ========================================================
+       MOBILE
+       ======================================================== */
+
+    @media (max-width: 700px) {
+
+        .block-container {
+            padding-top: 1.25rem;
+            padding-bottom: 2.5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .hero-title {
+            font-size: 43px;
+            line-height: 0.94;
+            max-width: 100%;
+        }
+
+        .section-title-lg {
+            font-size: 36px;
+            line-height: 0.96;
+        }
+
+        .section-title {
+            font-size: 29px;
+            line-height: 1;
+        }
+
+        .lead {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .body-copy {
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .grid-4,
+        .grid-3,
+        .grid-2 {
+            grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .filmstrip {
+            grid-template-columns: 1fr;
+        }
+
+        .film-cell,
+        .cell,
+        .card,
+        .obj-card,
+        .join-card {
+            min-height: auto;
+        }
+
+        .cell-number,
+        .obj-number {
+            margin-bottom: 1.2rem;
+        }
+
+        [data-testid="stHorizontalBlock"] {
+            flex-direction: column !important;
+            gap: 1rem !important;
+        }
+
+        .channel-btn {
+            display: block;
+            width: 100%;
+            margin: 7px 0;
+            text-align: center;
+        }
+
+        .rule {
+            margin: 2.2rem 0;
+        }
+    }
+
+    /* ========================================================
+       MOBILE PEQUENO
+       ======================================================== */
+
+    @media (max-width: 430px) {
+
+        .block-container {
+            padding-left: 0.85rem;
+            padding-right: 0.85rem;
+        }
+
+        .hero-title {
+            font-size: 37px;
+        }
+
+        .section-title-lg {
+            font-size: 32px;
+        }
+
+        .section-title {
+            font-size: 27px;
+        }
+
+        .lead {
+            font-size: 15px;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .stat-value {
+            font-size: 34px;
+        }
+
+        .frame-tab {
+            font-size: 9px;
+            padding: 6px 8px;
+            letter-spacing: 0.1em;
+        }
+
+        .cell,
+        .card,
+        .obj-card,
+        .join-card,
+        .film-cell {
+            padding: 18px;
+        }
+
+        .cell-title {
+            font-size: 21px;
+        }
+
+        .obj-title {
+            font-size: 23px;
+        }
+
+        .film-title {
+            font-size: 20px;
+        }
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 # ============================================================
-# CONTEÚDO
+# DADOS
 # ============================================================
 
 NUCLEOS = [
@@ -836,7 +900,6 @@ NUCLEOS = [
     ),
 ]
 
-
 LIDERANCA = [
     (
         "Direção Executiva",
@@ -871,7 +934,6 @@ LIDERANCA = [
     ),
 ]
 
-
 OBJETIVOS = [
     (
         "01",
@@ -894,7 +956,6 @@ OBJETIVOS = [
         "Oportunidades reais de desenvolvimento profissional dentro de universos ficcionais memoráveis.",
     ),
 ]
-
 
 PIPELINE = [
     (
@@ -930,523 +991,609 @@ PIPELINE = [
     (
         "07",
         "Publicação",
-        "Marketing divulga só o que passou pelo controle de qualidade.",
+        "Marketing divulga somente o que passou pelo controle de qualidade.",
     ),
 ]
 
+FRENTES = [
+    "Animação",
+    "Histórias em quadrinhos",
+    "Produção audiovisual",
+    "Criação de personagens",
+    "Construção de universos",
+    "Edição de vídeo",
+    "Dublagem",
+    "Design de som",
+    "Ilustração",
+    "Conteúdo para redes sociais",
+    "Marketing",
+    "Parcerias externas",
+]
 
 CANAIS = {
     "YouTube": "https://youtube.com/@protocoloneoficial?si=n9Iz6yuJhs3W5KgM",
-    "Instagram": "https://www.instagram.com/protocoloneofc?igsi=MWRjOWs1bmx3amx5cg==",
+    "Instagram": "https://www.instagram.com/protocoloneofc?igsh=MWRjOWs1bmx3amx5cg==",
     "TikTok": "https://www.tiktok.com/@protocoloneoficial?_r=1&_t=ZS-99IfbZKurp4",
 }
 
 EMAIL_CONTATO = "protocolonecontato@gmail.com"
 
+# ============================================================
+# SIDEBAR
+# ============================================================
+
+with st.sidebar:
+
+    st.markdown(
+        """
+        <div class="sidebar-logo">PROTOCOL<br>ONE</div>
+        <div class="sidebar-subtitle">ProtoCommunity</div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    pagina = st.radio(
+        "NAVEGAÇÃO",
+        [
+            "O Projeto",
+            "Estrutura",
+            "Objetivos",
+            "Participe",
+        ],
+    )
+
+    st.markdown(
+        '<div class="sidebar-label">Canais oficiais</div>',
+        unsafe_allow_html=True,
+    )
+
+    for nome, url in CANAIS.items():
+        st.markdown(
+            f"""
+            <a
+                class="channel-btn"
+                href="{url}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                {nome}
+            </a>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    st.markdown(
+        '<div class="sidebar-label">Contato</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        f'<div class="sidebar-email">{EMAIL_CONTATO}</div>',
+        unsafe_allow_html=True,
+    )
 
 # ============================================================
-# SIDEBAR / NAVEGAÇÃO
-# ============================================================
-
-st.sidebar.markdown(
-    """
-    <div class="sidebar-brand">PROTOCOL ONE</div>
-    <div class="sidebar-subtitle">ProtoCommunity</div>
-    """,
-    unsafe_allow_html=True,
-)
-
-st.sidebar.markdown(
-    "<hr class='sidebar-divider'>",
-    unsafe_allow_html=True,
-)
-
-pagina = st.sidebar.radio(
-    "Navegação",
-    ["O Projeto", "Estrutura", "Objetivos", "Participe"],
-    label_visibility="collapsed",
-)
-
-st.sidebar.markdown(
-    "<hr class='sidebar-divider'>",
-    unsafe_allow_html=True,
-)
-
-st.sidebar.caption("Canais oficiais")
-
-for nome, link in CANAIS.items():
-    st.sidebar.markdown(f"[{nome}]({link})")
-
-st.sidebar.caption(EMAIL_CONTATO)
-
-
-# ============================================================
-# PÁGINA: O PROJETO
+# PÁGINA — O PROJETO
 # ============================================================
 
 if pagina == "O Projeto":
 
     st.markdown(
-        "<span class='frame-tab'>quadro 00 — abertura</span>",
+        '<div class="frame-tab">Quadro 00 — Abertura</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<div class='hero-title'>Uma comunidade com disciplina de estúdio.</div>",
+        '<div class="eyebrow">Protocol One / ProtoCommunity</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        '<div class="hero-title">Uma comunidade com disciplina de estúdio.</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
         """
-        <p class="intro-text">
-            A ProtoCommunity é o organismo criativo por trás do Protocol One:
-            animação, histórias em quadrinhos, produção audiovisual e universos
-            ficcionais construídos de forma colaborativa — com hierarquia clara,
-            pipeline de produção formal e um lugar definido para cada pessoa que entra.
-        </p>
+        <div class="lead">
+            O Protocol One é uma organização criativa voltada à construção
+            de universos, personagens e produções audiovisuais, combinando
+            criatividade, processos profissionais e desenvolvimento de talentos.
+        </div>
         """,
         unsafe_allow_html=True,
     )
 
-    stats_html = "".join(
-        [
-            """
-            <div class="stat">
-                <div class="stat-label">Núcleos organizacionais</div>
-                <div class="stat-value">08</div>
-            </div>
-            """,
-            """
-            <div class="stat">
-                <div class="stat-label">Frentes criativas ativas</div>
-                <div class="stat-value">6+</div>
-            </div>
-            """,
-            """
-            <div class="stat">
-                <div class="stat-label">Canais oficiais</div>
-                <div class="stat-value">03</div>
-            </div>
-            """,
-            """
-            <div class="stat">
-                <div class="stat-label">Etapas do pipeline</div>
-                <div class="stat-value">07</div>
-            </div>
-            """,
-        ]
+    st.markdown(
+        '<div class="accent-line"></div>',
+        unsafe_allow_html=True,
     )
 
+    STATS = [
+        ("08", "Núcleos organizacionais"),
+        ("6+", "Frentes criativas"),
+        ("03", "Canais oficiais"),
+        ("07", "Etapas do pipeline"),
+    ]
+
+    stats_html = '<div class="stats-grid">'
+
+    for valor, label in STATS:
+        stats_html += f"""
+        <div class="stat">
+            <div class="stat-value">{valor}</div>
+            <div class="stat-label">{label}</div>
+        </div>
+        """
+
+    stats_html += "</div>"
+
     st.markdown(
-        f"<div class='stats-grid'>{stats_html}</div>",
+        stats_html,
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<hr class='rule'>",
+        '<div class="rule"></div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<span class='frame-tab'>quadro 01 — o que é</span>",
+        '<div class="frame-tab">Quadro 01 — O que é</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<div class='section-title'>O que é a ProtoCommunity</div>",
+        '<div class="section-title-lg">O que é a ProtoCommunity</div>',
         unsafe_allow_html=True,
     )
 
-    c1, c2 = st.columns(2)
+    col1, col2 = st.columns(2)
 
-    with c1:
+    with col1:
+
         st.markdown(
             """
-            <p class="body-text">
-                O Protocol One nasce dentro da ProtoCommunity, uma comunidade
-                colaborativa organizada para funcionar com a seriedade de um
-                estúdio profissional de produção criativa. Cada projeto atravessa
-                etapas de roteiro, arte, animação, som e publicação antes de chegar
-                ao público — e cada etapa tem um responsável claro.
-            </p>
+            <div class="body-copy">
+                A ProtoCommunity funciona como uma estrutura colaborativa
+                para transformar ideias em projetos criativos concretos.
+                A proposta une diferentes especialidades em torno de um
+                mesmo universo institucional.
+            </div>
 
-            <p class="body-text muted-text">
-                Não é apenas um conjunto de grupos de conversa: é uma organização
-                com hierarquia, responsabilidades definidas e fluxo de aprovação,
-                que hoje usa o WhatsApp como ferramenta de trabalho, sem depender
-                dele para existir.
-            </p>
+            <br>
+
+            <div class="body-copy">
+                O objetivo é criar um ambiente onde produção artística,
+                gestão, tecnologia, comunicação e estratégia possam trabalhar
+                de maneira integrada.
+            </div>
             """,
             unsafe_allow_html=True,
         )
 
-    with c2:
+    with col2:
+
+        chips_html = '<div class="chip-row">'
+
+        for frente in FRENTES:
+            chips_html += f'<span class="chip">{frente}</span>'
+
+        chips_html += "</div>"
 
         st.markdown(
-            "<p style='font-weight:600; margin-bottom:6px;'>Frentes de atuação</p>",
+            chips_html,
             unsafe_allow_html=True,
         )
-
-        frentes = [
-            "Animação",
-            "Histórias em quadrinhos",
-            "Produção audiovisual",
-            "Criação de personagens",
-            "Construção de universos",
-            "Edição de vídeo",
-            "Dublagem",
-            "Design de som",
-            "Ilustração",
-            "Conteúdo para redes sociais",
-            "Marketing",
-            "Parcerias externas",
-        ]
-
-        chips_html = "".join(
-            f"<span class='chip'>{frente}</span>"
-            for frente in frentes
-        )
-
-        st.markdown(
-            f"<div class='chip-row'>{chips_html}</div>",
-            unsafe_allow_html=True,
-        )
-
 
 # ============================================================
-# PÁGINA: ESTRUTURA
+# PÁGINA — ESTRUTURA
 # ============================================================
 
 elif pagina == "Estrutura":
 
     st.markdown(
-        "<span class='frame-tab'>quadro 02 — estrutura</span>",
+        '<div class="frame-tab">Quadro 02 — Estrutura</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<div class='page-title'>Oito núcleos. Um só rumo.</div>",
+        '<div class="section-title-lg">Oito núcleos. Um só rumo.</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
         """
-        <p class="muted-text narrow-text">
-            A ProtoCommunity está organizada em oito núcleos que cobrem desde
-            a estratégia institucional até a entrega final de cada projeto ao público.
-        </p>
+        <div class="lead">
+            A organização distribui suas responsabilidades em núcleos
+            especializados, permitindo que cada área tenha uma função clara
+            dentro do funcionamento geral do projeto.
+        </div>
         """,
         unsafe_allow_html=True,
     )
 
-    cells = "".join(
-        f"""
+    st.markdown(
+        '<div style="height:24px;"></div>',
+        unsafe_allow_html=True,
+    )
+
+    nucleos_html = '<div class="grid-4">'
+
+    for numero, titulo, descricao in NUCLEOS:
+
+        nucleos_html += f"""
         <div class="cell">
-            <span class="index">{numero}</span>
-            <h4>{titulo}</h4>
-            <p>{descricao}</p>
+            <div class="cell-number">{numero}</div>
+            <div class="cell-title">{titulo}</div>
+            <div class="cell-text">{descricao}</div>
         </div>
         """
-        for numero, titulo, descricao in NUCLEOS
-    )
+
+    nucleos_html += "</div>"
 
     st.markdown(
-        f"<div class='grid-4'>{cells}</div>",
+        nucleos_html,
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<hr class='rule'>",
+        '<div class="rule"></div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<div class='subsection-title'>Estrutura de Liderança</div>",
+        '<div class="section-title">Estrutura de Liderança</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
         """
-        <p class="muted-text narrow-text">
-            A estrutura de liderança organiza as principais responsabilidades
-            da ProtoCommunity, estabelecendo funções claras para a gestão,
-            criação, produção e desenvolvimento dos projetos.
-        </p>
+        <div class="body-copy">
+            A liderança é organizada por frentes de responsabilidade,
+            conectando direção estratégica, produção criativa, gestão,
+            marketing e governança.
+        </div>
         """,
         unsafe_allow_html=True,
     )
 
-    cards_html = ""
+    st.markdown(
+        '<div style="height:18px;"></div>',
+        unsafe_allow_html=True,
+    )
 
-    for titulo, papeis in LIDERANCA:
+    lideranca_html = '<div class="grid-4">'
 
-        rows = "".join(
-            f"""
-            <div class="role-row">
-                <span>{cargo}</span>
-            </div>
-            """
-            for cargo in papeis
-        )
+    for titulo, cargos in LIDERANCA:
 
-        cards_html += f"""
+        lideranca_html += f"""
         <div class="card">
-            <h4>{titulo}</h4>
-            {rows}
+            <h3>{titulo}</h3>
+            <div class="role-row">
+        """
+
+        for cargo in cargos:
+            lideranca_html += f'<span class="badge">{cargo}</span>'
+
+        lideranca_html += """
+            </div>
         </div>
         """
 
+    lideranca_html += "</div>"
+
     st.markdown(
-        f"""
-        <div class="grid-4"
-             style="background:transparent; border:none; gap:16px;">
-            {cards_html}
+        lideranca_html,
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        '<div class="rule"></div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        '<div class="section-title">Conselho Consultivo e Deliberativo</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+        <div class="body-copy">
+            O Conselho atua como órgão colegiado de fiscalização,
+            governança e deliberação sobre questões estruturais da
+            organização, preservando coerência e transparência institucional.
         </div>
         """,
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<hr class='rule'>",
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        "<div class='subsection-title'>Conselho Consultivo e Deliberativo</div>",
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
         """
-        <p class="muted-text narrow-text">
-            Órgão colegiado responsável pela salvaguarda institucional,
-            fiscalização e deliberações estratégicas da ProtoCommunity.
-        </p>
+        <div class="chip-row">
+            <span class="pill">Governança</span>
+            <span class="pill">Fiscalização</span>
+            <span class="pill">Direcionamento estratégico</span>
+        </div>
         """,
         unsafe_allow_html=True,
     )
 
-    pilares = "".join(
-        f"""
-        <div class="cell">
-            <h4>{nome}</h4>
-            <p>{descricao}</p>
-        </div>
-        """
-        for nome, descricao in [
-            (
-                "Fiscalização",
-                "Delibera sobre questões estruturais e operacionais da organização.",
-            ),
-            (
-                "Governança",
-                "Decide mudanças na estrutura e no direcionamento estratégico.",
-            ),
-            (
-                "Transparência",
-                "Mantém o alinhamento ético e a cultura institucional vivos.",
-            ),
-        ]
-    )
-
     st.markdown(
-        f"<div class='pillars-grid'>{pilares}</div>",
+        '<div style="height:18px;"></div>',
         unsafe_allow_html=True,
     )
 
+    st.markdown(
+        """
+        <div class="grid-3">
+
+            <div class="cell">
+                <div class="cell-title">Fiscalização</div>
+                <div class="cell-text">
+                    Delibera sobre questões estruturais e operacionais
+                    da organização.
+                </div>
+            </div>
+
+            <div class="cell">
+                <div class="cell-title">Governança</div>
+                <div class="cell-text">
+                    Decide mudanças na estrutura e no direcionamento
+                    estratégico.
+                </div>
+            </div>
+
+            <div class="cell">
+                <div class="cell-title">Transparência</div>
+                <div class="cell-text">
+                    Mantém o alinhamento ético e a cultura institucional vivos.
+                </div>
+            </div>
+
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 # ============================================================
-# PÁGINA: OBJETIVOS
+# PÁGINA — OBJETIVOS
 # ============================================================
 
 elif pagina == "Objetivos":
 
     st.markdown(
-        "<span class='frame-tab'>quadro 03 — objetivos</span>",
+        '<div class="frame-tab">Quadro 03 — Objetivos</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<div class='page-title'>Para onde estamos indo</div>",
+        '<div class="section-title-lg">O que queremos construir.</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
         """
-        <p class="muted-text narrow-text">
-            Quatro objetivos orientam cada decisão da ProtoCommunity,
-            do primeiro rascunho à publicação final.
-        </p>
+        <div class="lead">
+            O Protocol One busca estabelecer uma estrutura sustentável,
+            criativa e profissional, capaz de transformar produção
+            independente em projetos de longo prazo.
+        </div>
         """,
         unsafe_allow_html=True,
     )
 
-    obj_html = "".join(
-        f"""
+    st.markdown(
+        '<div style="height:24px;"></div>',
+        unsafe_allow_html=True,
+    )
+
+    objetivos_html = '<div class="grid-4">'
+
+    for numero, titulo, descricao in OBJETIVOS:
+
+        objetivos_html += f"""
         <div class="obj-card">
-            <span class="num">{numero}</span>
-            <h4>{titulo}</h4>
-            <p>{descricao}</p>
+            <div class="obj-number">{numero}</div>
+            <div class="obj-title">{titulo}</div>
+            <div class="obj-text">{descricao}</div>
         </div>
         """
-        for numero, titulo, descricao in OBJETIVOS
+
+    objetivos_html += "</div>"
+
+    st.markdown(
+        objetivos_html,
+        unsafe_allow_html=True,
     )
 
     st.markdown(
-        f"""
-        <div class="grid-4"
-             style="background:transparent; border:none; gap:16px;">
-            {obj_html}
+        '<div class="rule"></div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        '<div class="section-title">Como uma ideia vira entrega</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+        <div class="body-copy">
+            O pipeline organiza o caminho entre conceito e publicação,
+            reduzindo retrabalho e garantindo que cada produção passe
+            pelas etapas necessárias antes de chegar ao público.
         </div>
         """,
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<hr class='rule'>",
+        '<div style="height:18px;"></div>',
         unsafe_allow_html=True,
     )
 
-    st.markdown(
-        "<div class='subsection-title'>Como uma ideia vira entrega</div>",
-        unsafe_allow_html=True,
-    )
+    pipeline_html = '<div class="filmstrip">'
 
-    st.markdown(
-        """
-        <p class="muted-text narrow-text">
-            Do conceito aprovado até o público, cada projeto segue um
-            pipeline com etapas e responsáveis definidos.
-        </p>
-        """,
-        unsafe_allow_html=True,
-    )
+    for numero, titulo, descricao in PIPELINE:
 
-    pipe_html = "".join(
-        f"""
+        pipeline_html += f"""
         <div class="film-cell">
-            <span class="fnum">{numero}</span>
-            <h5>{titulo}</h5>
-            <p>{descricao}</p>
+            <div class="film-number">{numero}</div>
+            <div class="film-title">{titulo}</div>
+            <div class="film-text">{descricao}</div>
         </div>
         """
-        for numero, titulo, descricao in PIPELINE
-    )
+
+    pipeline_html += "</div>"
 
     st.markdown(
-        f"<div class='filmstrip'>{pipe_html}</div>",
+        pipeline_html,
         unsafe_allow_html=True,
     )
-
 
 # ============================================================
-# PÁGINA: PARTICIPE
+# PÁGINA — PARTICIPE
 # ============================================================
 
 elif pagina == "Participe":
 
     st.markdown(
-        "<span class='frame-tab'>quadro 04 — participe</span>",
+        '<div class="frame-tab">Quadro 04 — Participe</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<div class='page-title'>Faça parte do Protocol One</div>",
+        '<div class="section-title-lg">Faça parte da ProtoCommunity</div>',
         unsafe_allow_html=True,
     )
 
     st.markdown(
         """
-        <p class="muted-text narrow-text">
-            Criadores, parceiros, imprensa e apoiadores encontram aqui
-            a porta de entrada certa para a ProtoCommunity.
-        </p>
+        <div class="lead">
+            O projeto foi pensado para reunir pessoas interessadas em criar,
+            aprender e construir algo maior por meio de colaboração organizada.
+        </div>
         """,
         unsafe_allow_html=True,
     )
 
-    join_html = "".join(
-        f"""
+    st.markdown(
+        '<div style="height:24px;"></div>',
+        unsafe_allow_html=True,
+    )
+
+    participar_html = """
+    <div class="grid-3">
+
         <div class="join-card">
-            <h4>{titulo}</h4>
-            <p>{descricao}</p>
+            <div class="join-symbol">◈</div>
+            <div class="join-title">Crie</div>
+            <div class="join-text">
+                Contribua para projetos de animação, HQs e audiovisual
+                de impacto real, dentro de um pipeline profissional.
+            </div>
         </div>
+
+        <div class="join-card">
+            <div class="join-symbol">◈</div>
+            <div class="join-title">Cresça</div>
+            <div class="join-text">
+                Desenvolva suas habilidades em um ambiente prático
+                e colaborativo, trocando conhecimento com outros criativos.
+            </div>
+        </div>
+
+        <div class="join-card">
+            <div class="join-symbol">◈</div>
+            <div class="join-title">Conecte-se</div>
+            <div class="join-text">
+                Faça parte de uma organização focada na construção
+                de universos e fortalecimento de comunidade.
+            </div>
+        </div>
+
+    </div>
+    """
+
+    st.markdown(
+        participar_html,
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        '<div class="rule"></div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        '<div class="section-title">Canais oficiais</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
         """
-        for titulo, descricao in [
-            (
-                "Crie",
-                "Contribua para projetos de animação, HQs e audiovisual de impacto real, dentro de um pipeline profissional.",
-            ),
-            (
-                "Cresça",
-                "Desenvolva suas habilidades em um ambiente colaborativo, com mentoria de quem já ocupa cargos de direção.",
-            ),
-            (
-                "Conecte-se",
-                "Faça parte de uma organização que valoriza qualidade, inovação e crescimento contínuo.",
-            ),
-        ]
-    )
-
-    st.markdown(
-        f"<div class='join-grid'>{join_html}</div>",
+        <div class="body-copy">
+            Acompanhe o desenvolvimento do Protocol One e conheça
+            os próximos projetos, produções e iniciativas da comunidade.
+        </div>
+        """,
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        "<hr class='rule'>",
+        '<div style="height:12px;"></div>',
         unsafe_allow_html=True,
     )
 
-    st.markdown(
-        "<p style='font-weight:600; margin-bottom:4px;'>Canais oficiais</p>",
-        unsafe_allow_html=True,
-    )
+    canais_html = ""
 
-    canais_html = "".join(
-        f"""
-        <a class="channel-btn"
-           href="{link}"
-           target="_blank"
-           rel="noopener noreferrer">
+    for nome, url in CANAIS.items():
+
+        canais_html += f"""
+        <a
+            class="channel-btn"
+            href="{url}"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
             {nome}
         </a>
         """
-        for nome, link in CANAIS.items()
-    )
 
     st.markdown(
-        f"<div class='channels'>{canais_html}</div>",
+        canais_html,
         unsafe_allow_html=True,
     )
 
     st.markdown(
         """
-        <p class="muted-text narrow-text" style="margin-top:20px;">
-            Criadores externos interessados em colaborar, jornalistas cobrindo
-            nossos projetos, e apoiadores ou investidores que queiram fortalecer
-            a ProtoCommunity são igualmente bem-vindos — escreva diretamente
-            para a Diretoria pelo e-mail abaixo.
-        </p>
+        <div class="contact-box">
+
+            <div class="contact-label">
+                Contato institucional
+            </div>
+
+            <div class="contact-email">
+                protocolonecontato@gmail.com
+            </div>
+
+        </div>
         """,
         unsafe_allow_html=True,
     )
 
     st.markdown(
-        f"""
-        <div style="margin-top:10px;">
-            <span style="
-                font-size:12px;
-                text-transform:uppercase;
-                letter-spacing:0.1em;
-                color:var(--ink-soft);
-            ">
-                E-mail oficial de contato
-            </span>
-            <br>
-            <span class="contact-email">
-                {EMAIL_CONTATO}
-            </span>
+        '<div style="height:10px;"></div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+        <div class="body-copy">
+            Criadores, parceiros, imprensa e apoiadores interessados
+            podem entrar em contato diretamente pelo canal institucional.
         </div>
         """,
         unsafe_allow_html=True,
