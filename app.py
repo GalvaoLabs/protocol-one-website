@@ -697,7 +697,6 @@ with st.sidebar:
 
 
 def pagina_projeto() -> None:
-    frame_tab("Quadro 00 — Abertura")
     render('<div class="eyebrow">Protocol One / ProtoCommunity</div>')
     render('<div class="hero-title">Uma comunidade com disciplina de estúdio.</div>')
     render(
@@ -755,7 +754,6 @@ def pagina_projeto() -> None:
 
 
 def pagina_estrutura() -> None:
-    frame_tab("Quadro 02 — Estrutura")
     render('<div class="section-title-lg">Oito núcleos. Um só rumo.</div>')
     render(
         """
@@ -835,7 +833,6 @@ def pagina_estrutura() -> None:
 
 
 def pagina_objetivos() -> None:
-    frame_tab("Quadro 03 — Objetivos")
     render('<div class="section-title-lg">O que queremos construir.</div>')
     render(
         """
@@ -883,7 +880,6 @@ def pagina_objetivos() -> None:
 
 
 def pagina_participe() -> None:
-    frame_tab("Quadro 04 — Participe")
     render('<div class="section-title-lg">Faça parte da ProtoCommunity</div>')
     render(
         """
