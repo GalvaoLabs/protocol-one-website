@@ -1,52 +1,267 @@
-# Protocol One — site institucional (Streamlit)
+# Protocol One — Site Institucional
 
-Site de apresentação da ProtoCommunity, feito em Python puro com [Streamlit](https://streamlit.io).
-Um só arquivo (`app.py`), fácil de editar e sem precisar saber HTML/CSS/JS para mudar o texto.
+### Website desenvolvido por GalvaoLabs para a ProtoCommunity
+
+Site institucional desenvolvido em **Python + Streamlit** para apresentar a estrutura, os objetivos, os processos e os canais oficiais da **ProtoCommunity / Protocol One**.
+
+O projeto faz parte do portfólio da **GalvaoLabs**, sendo um trabalho de desenvolvimento web realizado para uma organização/projeto de terceiros.
+
+> **Importante:** a GalvaoLabs é responsável pelo desenvolvimento deste website, não pela propriedade ou gestão do Protocol One / ProtoCommunity.
+
+---
+
+## Sobre o projeto
+
+O website foi desenvolvido para transformar as informações institucionais da ProtoCommunity em uma interface web organizada, responsiva e visualmente consistente.
+
+A aplicação apresenta:
+
+- informações gerais sobre o projeto;
+- estrutura organizacional;
+- núcleos e áreas de atuação;
+- estrutura de liderança;
+- objetivos;
+- pipeline de produção;
+- formas de participação;
+- canais oficiais e contato.
+
+A interface foi construída com foco em **clareza, organização e identidade visual**, utilizando uma combinação de Python, Streamlit, HTML e CSS.
+
+---
+
+## Desenvolvimento
+
+O projeto foi desenvolvido pela **GalvaoLabs** como uma aplicação web em Streamlit.
+
+Entre os principais aspectos trabalhados estão:
+
+- construção da interface em Streamlit;
+- criação de componentes HTML reutilizáveis;
+- estilização personalizada com CSS;
+- layout responsivo;
+- navegação entre páginas;
+- organização dos dados em estruturas Python;
+- adaptação da interface para desktop, tablet e mobile;
+- integração de identidade visual própria ao projeto;
+- organização do código para facilitar futuras alterações.
+
+---
+
+## Tecnologias
+
+| Tecnologia | Utilização |
+|---|---|
+| **Python** | Linguagem principal |
+| **Streamlit** | Framework da aplicação web |
+| **HTML** | Estrutura e componentes da interface |
+| **CSS** | Identidade visual e responsividade |
+| **Google Fonts** | Tipografia |
+| **Git / GitHub** | Versionamento e distribuição |
+
+---
+
+## Estrutura do projeto
+
+```text
+Protocol-One/
+│
+├── app.py
+├── logo.png
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
+
+### Arquivos
+
+**`app.py`**  
+Arquivo principal da aplicação. Contém a estrutura do site, navegação, dados institucionais, componentes e estilos personalizados.
+
+**`logo.png`**  
+Logotipo utilizado na Sidebar da aplicação.
+
+**`requirements.txt`**  
+Lista de dependências necessárias para executar o projeto.
+
+**`LICENSE`**  
+Define os termos de licenciamento do código deste repositório.
+
+**`README.md`**  
+Documentação técnica e contextualização do projeto.
+
+---
+
+## Interface
+
+A interface utiliza uma identidade visual baseada em:
+
+- preto e tons neutros;
+- âmbar como cor de destaque;
+- tipografia **Big Shoulders Display**;
+- tipografia **Space Grotesk**;
+- cards e grids;
+- Sidebar de navegação;
+- efeitos de interação;
+- layout responsivo;
+- suporte a tema claro e escuro conforme as preferências do sistema.
+
+---
+
+## Estrutura do website
+
+### O Projeto
+
+Apresenta a proposta da ProtoCommunity, suas características e suas principais frentes criativas.
+
+### Estrutura
+
+Apresenta os núcleos organizacionais, a estrutura de liderança e o Conselho.
+
+### Objetivos
+
+Apresenta os objetivos institucionais e o processo utilizado para transformar uma ideia em uma produção.
+
+### Participe
+
+Apresenta formas de acompanhar os canais oficiais e entrar em contato com a organização.
+
+---
+
+## Pipeline apresentado
+
+O website apresenta um pipeline de produção dividido em **7 etapas**:
+
+```text
+01 — Ideia e conceito
+02 — Roteiro
+03 — Storyboard
+04 — Animatic
+05 — Animação e som
+06 — Controle de qualidade
+07 — Publicação
+```
+
+O pipeline é apresentado como parte do conteúdo institucional do website.
+
+---
 
 ## Rodar localmente
 
+Clone o repositório e instale as dependências:
+
 ```bash
+git clone SEU_REPOSITORIO
+cd Protocol-One
 pip install -r requirements.txt
+```
+
+Depois, execute:
+
+```bash
 streamlit run app.py
 ```
 
-Abre automaticamente em `http://localhost:8501`.
+A aplicação ficará disponível localmente em:
 
-## Hospedar de graça — Streamlit Community Cloud (recomendado)
+```text
+http://localhost:8501
+```
 
-É o jeito mais direto de colocar um app Streamlit no ar sem pagar nada e sem mexer em servidor.
+---
 
-1. Crie uma conta gratuita no [GitHub](https://github.com), se ainda não tiver.
-2. Crie um repositório novo (pode ser público) e suba estes quatro arquivos:
-   `app.py`, `requirements.txt`, `LICENSE` e este `README.md`.
-   - Pelo site do GitHub: botão **Add file → Upload files**, arraste os arquivos e clique em **Commit changes**.
-3. Entre em [share.streamlit.io](https://share.streamlit.io) e faça login com sua conta do GitHub.
-4. Clique em **New app**, escolha o repositório, a branch (`main`) e o arquivo principal (`app.py`).
-5. Clique em **Deploy**. Em cerca de um minuto o site fica no ar, com uma URL do tipo
-   `https://protocol-one.streamlit.app` (o nome pode ser personalizado nas configurações do app).
+## Hospedagem
 
-Qualquer alteração que você fizer no `app.py` e enviar (`commit`) para o GitHub atualiza o site
-automaticamente, sem precisar reimplantar nada manualmente.
+O projeto pode ser hospedado utilizando serviços compatíveis com aplicações Streamlit.
 
-### Alternativas gratuitas (se um dia precisar de mais controle)
+### Streamlit Community Cloud
 
-- **Render** (render.com) — plano free para apps Web Service, sobe um `Dockerfile` ou detecta o
-  `requirements.txt` direto. Um pouco mais técnico que o Streamlit Cloud.
-- **Hugging Face Spaces** (huggingface.co/spaces) — aceita apps Streamlit gratuitamente, bom se você
-  já usa a Hugging Face para outras coisas.
+É uma das opções mais simples para publicar a aplicação diretamente a partir de um repositório GitHub.
 
-Para este projeto, o Streamlit Community Cloud é a opção mais simples: é feito exatamente para
-apps como este, o deploy é automático a cada envio ao GitHub, e não exige cartão de crédito.
+O fluxo básico é:
 
-## Estrutura do arquivo
+1. Publicar o projeto no GitHub;
+2. Acessar o Streamlit Community Cloud;
+3. Conectar a conta do GitHub;
+4. Selecionar o repositório;
+5. Selecionar `app.py` como arquivo principal;
+6. Realizar o deploy.
 
-- `app.py` — todo o conteúdo e estilo do site (cores, tipografia e textos ficam em variáveis no
-  topo do arquivo, fáceis de editar).
-- `requirements.txt` — dependências (apenas o Streamlit).
+Após a publicação, alterações enviadas ao repositório podem ser utilizadas para atualizar a aplicação.
 
-## Editar o conteúdo
+---
 
-Os textos de cada seção (núcleos, liderança, objetivos, pipeline, canais) estão em listas Python
-perto do topo do `app.py` (`NUCLEOS`, `LIDERANCA`, `OBJETIVOS`, `PIPELINE`, `CANAIS`). Para mudar um
-nome, cargo ou descrição, basta editar o texto dentro das aspas e salvar — não é preciso mexer no
-resto do código.
+## Editando o conteúdo
+
+Grande parte do conteúdo institucional está organizada em listas Python no início do arquivo `app.py`.
+
+Entre as principais estruturas estão:
+
+```python
+NUCLEOS
+LIDERANCA
+CONSELHO
+OBJETIVOS
+PIPELINE
+FRENTES
+CANAIS
+```
+
+Isso permite alterar nomes, descrições, cargos, etapas e canais sem precisar modificar a estrutura principal da aplicação.
+
+Por exemplo:
+
+```python
+PIPELINE = [
+    (
+        "01",
+        "Ideia e conceito",
+        "Descrição da etapa.",
+    ),
+]
+```
+
+A estrutura pode ser modificada conforme as necessidades do projeto.
+
+---
+
+## Responsabilidade e autoria
+
+Este repositório documenta o **desenvolvimento técnico do website**.
+
+### Protocol One / ProtoCommunity
+
+É a organização/projeto apresentado pelo website e responsável pelo conteúdo institucional representado na aplicação.
+
+### GalvaoLabs
+
+Responsável pelo **desenvolvimento, implementação e estrutura técnica do website** presente neste repositório.
+
+A utilização de nomes, marcas, conceitos ou informações relacionados ao Protocol One / ProtoCommunity neste projeto não significa que a GalvaoLabs seja proprietária da organização.
+
+---
+
+## GalvaoLabs
+
+Este projeto faz parte do portfólio da **GalvaoLabs**, iniciativa voltada a projetos e estudos em tecnologia, programação e desenvolvimento.
+
+**Tech • Estudos • Evolução**
+
+> *Só sei que nada sei.*
+
+---
+
+## Status
+
+**Em desenvolvimento.**
+
+O projeto pode receber alterações futuras de interface, conteúdo, responsividade e funcionalidades conforme as necessidades do website.
+
+---
+
+<div align="center">
+
+### GALVAOLABS
+
+**Tech • Estudos • Evolução**
+
+</div>
