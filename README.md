@@ -4,9 +4,9 @@
 
 Site institucional desenvolvido em **Python + Streamlit** para apresentar a estrutura, os objetivos, os processos e os canais oficiais da **ProtoCommunity / Protocol One**.
 
-O projeto faz parte do portfólio da **GalvaoLabs**, sendo um trabalho de desenvolvimento web realizado para uma organização/projeto de terceiros.
+O projeto faz parte do portfólio de **Miguel Henrique** ([GalvaoLabs](https://github.com/GalvaoLabs)), sendo um trabalho de desenvolvimento web realizado para uma organização/projeto de terceiros.
 
-> **Importante:** a GalvaoLabs é responsável pelo desenvolvimento deste website, não pela propriedade ou gestão do Protocol One / ProtoCommunity.
+> **Importante:** o desenvolvimento deste website é de responsabilidade de Miguel Henrique, sob a identidade **GalvaoLabs**. A GalvaoLabs não é proprietária nem responsável pela gestão do Protocol One / ProtoCommunity.
 
 ---
 
@@ -31,7 +31,7 @@ A interface foi construída com foco em **clareza, organização e identidade vi
 
 ## Desenvolvimento
 
-O projeto foi desenvolvido pela **GalvaoLabs** como uma aplicação web em Streamlit.
+O projeto foi desenvolvido por **Miguel Henrique — GalvaoLabs** como uma aplicação web em Streamlit.
 
 Entre os principais aspectos trabalhados estão:
 
@@ -42,7 +42,7 @@ Entre os principais aspectos trabalhados estão:
 - navegação entre páginas;
 - organização dos dados em estruturas Python;
 - adaptação da interface para desktop, tablet e mobile;
-- integração de identidade visual própria ao projeto;
+- integração da identidade visual do projeto;
 - organização do código para facilitar futuras alterações.
 
 ---
@@ -232,17 +232,21 @@ Este repositório documenta o **desenvolvimento técnico do website**.
 
 É a organização/projeto apresentado pelo website e responsável pelo conteúdo institucional representado na aplicação.
 
-### GalvaoLabs
+### Miguel Henrique — GalvaoLabs
 
 Responsável pelo **desenvolvimento, implementação e estrutura técnica do website** presente neste repositório.
 
-A utilização de nomes, marcas, conceitos ou informações relacionados ao Protocol One / ProtoCommunity neste projeto não significa que a GalvaoLabs seja proprietária da organização.
+A utilização de nomes, marcas, conceitos ou informações relacionados ao Protocol One / ProtoCommunity neste projeto não significa que Miguel Henrique ou a GalvaoLabs sejam proprietários da organização.
 
 ---
 
 ## GalvaoLabs
 
-Este projeto faz parte do portfólio da **GalvaoLabs**, iniciativa voltada a projetos e estudos em tecnologia, programação e desenvolvimento.
+A **GalvaoLabs** é a identidade utilizada por Miguel Henrique para reunir projetos, estudos e experimentos relacionados a tecnologia, programação e desenvolvimento.
+
+O repositório do projeto pode ser encontrado no GitHub:
+
+**[github.com/GalvaoLabs](https://github.com/GalvaoLabs)**
 
 **Tech • Estudos • Evolução**
 
@@ -252,7 +256,7 @@ Este projeto faz parte do portfólio da **GalvaoLabs**, iniciativa voltada a pro
 
 ## Status
 
-**Em desenvolvimento.**
+**Projeto de portfólio — Em desenvolvimento.**
 
 O projeto pode receber alterações futuras de interface, conteúdo, responsividade e funcionalidades conforme as necessidades do website.
 
