@@ -24,21 +24,28 @@ CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-    --paper: #F7F6F2;
+    --paper: #F6F4EE;
     --paper-card: #FFFFFF;
-    --ink: #18272C;
-    --ink-soft: #59676C;
-    --navy: #173F4A;
-    --navy-deep: #102F38;
-    --teal: #39757A;
-    --teal-dark: #285B61;
-    --teal-soft: #DCEBEC;
-    --gold: #C6A263;
-    --gold-soft: #EFE4CF;
-    --line: rgba(24, 39, 44, 0.12);
-    --line-strong: rgba(24, 39, 44, 0.24);
-    --shadow: 0 10px 30px rgba(16, 47, 56, 0.07);
-    --shadow-hover: 0 14px 34px rgba(16, 47, 56, 0.11);
+
+    --ink: #12232A;
+    --ink-soft: #4A5B61;
+
+    --navy: #0F3A47;
+    --navy-deep: #0A2630;
+
+    --teal: #1F7A80;
+    --teal-dark: #165A63;
+    --teal-bright: #5FD0C8;
+    --teal-soft: #D8EEEE;
+
+    --gold: #D4A64A;
+    --gold-deep: #8F6B1F;
+    --gold-soft: #F3E6C8;
+
+    --line: rgba(18, 35, 42, 0.12);
+    --line-strong: rgba(18, 35, 42, 0.26);
+    --shadow: 0 10px 30px rgba(10, 38, 48, 0.08);
+    --shadow-hover: 0 14px 34px rgba(10, 38, 48, 0.14);
     --display: "Big Shoulders Display", sans-serif;
 }
 
@@ -49,7 +56,9 @@ CSS = """
 html, body, .stApp,
 [data-testid="stAppViewContainer"],
 [data-testid="stMain"] {
-    background: var(--paper);
+    background:
+        radial-gradient(ellipse 70% 40% at 85% -5%, rgba(95, 208, 200, 0.14), transparent 70%),
+        var(--paper);
     font-family: "Space Grotesk", sans-serif;
     color: var(--ink);
 }
@@ -79,8 +88,8 @@ a:focus-visible, .stRadio label:focus-visible {
 /* ---------- SIDEBAR ---------- */
 
 section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, var(--navy-deep) 0%, #143841 100%);
-    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    background: linear-gradient(180deg, var(--navy-deep) 0%, #0E3340 100%);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 section[data-testid="stSidebar"] * { color: #F4F7F5 !important; }
@@ -101,7 +110,7 @@ section[data-testid="stSidebar"] * { color: #F4F7F5 !important; }
     margin-bottom: 2rem;
 }
 
-section[data-testid="stSidebar"] .sidebar-subtitle { color: #AFC7CA !important; }
+section[data-testid="stSidebar"] .sidebar-subtitle { color: #A9D6D6 !important; }
 
 .sidebar-label {
     font-size: 10px;
@@ -111,7 +120,7 @@ section[data-testid="stSidebar"] .sidebar-subtitle { color: #AFC7CA !important; 
     margin: 1.5rem 0 0.65rem;
 }
 
-section[data-testid="stSidebar"] .sidebar-label { color: #8FAEB2 !important; }
+section[data-testid="stSidebar"] .sidebar-label { color: var(--teal-bright) !important; }
 
 /* Links da sidebar (fundo escuro): texto claro, hover dourado.
    Seletor mais específico para vencer o "section[...] *" acima. */
@@ -239,12 +248,12 @@ section[data-testid="stSidebar"] a.side-email {
 
 .cell:hover {
     transform: translateY(-2px);
-    border-color: rgba(57, 117, 122, 0.35);
+    border-color: rgba(31, 122, 128, 0.4);
     box-shadow: var(--shadow);
 }
 
 .cell-number, .obj-number {
-    color: var(--gold);
+    color: var(--gold-deep);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -296,19 +305,19 @@ section[data-testid="stSidebar"] a.side-email {
     border: 1px solid var(--line);
     border-radius: 999px;
     background: var(--paper-card);
-    color: var(--ink-soft);
+    color: var(--navy);
     font-size: 12px;
     line-height: 1.25;
 }
 
-.chip:hover { border-color: rgba(57, 117, 122, 0.3); }
+.chip:hover { border-color: rgba(31, 122, 128, 0.4); background: var(--teal-soft); }
 
 .badge {
     display: inline-block;
     padding: 6px 9px;
     border-radius: 4px;
     background: var(--teal-soft);
-    border: 1px solid rgba(57, 117, 122, 0.18);
+    border: 1px solid rgba(31, 122, 128, 0.22);
     color: var(--teal);
     font-size: 10px;
     font-weight: 700;
@@ -338,6 +347,10 @@ section[data-testid="stSidebar"] a.side-email {
     box-shadow: var(--shadow);
 }
 
+.obj-card:nth-child(2) { background: linear-gradient(145deg, var(--teal-dark) 0%, var(--teal) 100%); }
+.obj-card:nth-child(3) { background: linear-gradient(145deg, var(--navy-deep) 0%, var(--navy) 100%); }
+.obj-card:nth-child(4) { background: linear-gradient(145deg, var(--teal) 0%, var(--teal-dark) 100%); }
+
 .obj-card::after {
     content: "";
     position: absolute;
@@ -358,7 +371,9 @@ section[data-testid="stSidebar"] a.side-email {
     margin-bottom: 0.8rem;
 }
 
-.obj-text { color: #DCE7E8; font-size: 13px; line-height: 1.6; }
+.obj-number { color: var(--gold); }
+
+.obj-text { color: #D6ECEC; font-size: 13px; line-height: 1.6; }
 
 /* ---------- PIPELINE ---------- */
 
@@ -375,7 +390,7 @@ section[data-testid="stSidebar"] a.side-email {
     display: block;
     width: 100%;
     height: 5px;
-    background: var(--gold-soft);
+    background: linear-gradient(90deg, var(--gold) 0%, var(--teal) 100%);
     margin-bottom: 20px;
 }
 
@@ -394,7 +409,8 @@ section[data-testid="stSidebar"] a.side-email {
 
 /* ---------- ESTATÍSTICAS ---------- */
 
-.stat { padding: 19px; border-top: 2px solid var(--teal); background: rgba(255, 255, 255, 0.62); }
+.stat { padding: 19px; border-top: 3px solid var(--teal); background: var(--paper-card); box-shadow: var(--shadow); }
+.stat:nth-child(even) { border-top-color: var(--gold); }
 
 .stat-value {
     font-family: var(--display);
