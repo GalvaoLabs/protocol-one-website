@@ -433,7 +433,13 @@ section[data-testid="stSidebar"] a.side-email {
     margin-bottom: 20px;
 }
 
-.film-number { font-size: 10px; color: var(--accent-text); font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.3rem; }
+.film-number {
+    font-size: 10px;
+    color: var(--accent-text);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.3rem;
+}
 
 .film-title {
     font-family: var(--display);
@@ -444,7 +450,11 @@ section[data-testid="stSidebar"] a.side-email {
     margin-bottom: 0.7rem;
 }
 
-.film-text { font-size: 12px; line-height: 1.5; color: var(--ink-soft); }
+.film-text {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+}
 
 /* ---------- ESTATÍSTICAS ---------- */
 
@@ -486,9 +496,19 @@ section[data-testid="stSidebar"] a.side-email {
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.join-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
+.join-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent);
+}
 
-.join-symbol { font-family: var(--display); font-size: 40px; color: var(--accent); line-height: 1; margin-bottom: 1.2rem; }
+.join-symbol {
+    font-family: var(--display);
+    font-size: 40px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+}
 
 .join-title {
     font-family: var(--display);
@@ -499,9 +519,14 @@ section[data-testid="stSidebar"] a.side-email {
     margin-bottom: 0.7rem;
 }
 
-.join-text { font-size: 13px; line-height: 1.65; color: var(--ink-soft); }
+.join-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+}
 
 /* Botões da área principal */
+
 a.btn {
     display: inline-block;
     margin: 4px 8px 4px 0;
@@ -518,75 +543,208 @@ a.btn {
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-a.btn:hover { background: var(--btn-hover); border-color: var(--btn-hover); color: #141414 !important; }
+a.btn:hover {
+    background: var(--btn-hover);
+    border-color: var(--btn-hover);
+    color: #141414 !important;
+}
 
-a.btn.ghost { background: transparent; color: var(--ink) !important; border-color: var(--line-strong); }
-a.btn.ghost:hover { background: var(--btn-bg); border-color: var(--btn-bg); color: var(--btn-fg) !important; }
+a.btn.ghost {
+    background: transparent;
+    color: var(--ink) !important;
+    border-color: var(--line-strong);
+}
+
+a.btn.ghost:hover {
+    background: var(--btn-bg);
+    border-color: var(--btn-bg);
+    color: var(--btn-fg) !important;
+}
 
 /* ---------- STREAMLIT ---------- */
 
-[data-testid="stHorizontalBlock"], [data-testid="stMarkdownContainer"] { min-width: 0; max-width: 100%; }
+[data-testid="stHorizontalBlock"],
+[data-testid="stMarkdownContainer"] {
+    min-width: 0;
+    max-width: 100%;
+}
 
 /* ---------- TABLET ---------- */
 
 @media (max-width: 1100px) {
-    .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .filmstrip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .filmstrip {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 /* ---------- MOBILE ---------- */
 
 @media (max-width: 700px) {
-    .block-container { padding: 1.25rem 1rem 2.5rem; }
+    .block-container {
+        padding: 1.25rem 1rem 2.5rem;
+    }
 
-    .hero-title { font-size: 43px; line-height: 0.94; }
-    .section-title-lg { font-size: 36px; line-height: 0.96; }
-    .section-title { font-size: 29px; }
-    .lead { font-size: 16px; line-height: 1.6; }
-    .body-copy { font-size: 14px; line-height: 1.65; }
+    .hero-title {
+        font-size: 43px;
+        line-height: 0.94;
+    }
 
-    .grid-4, .grid-3, .grid-2, .filmstrip { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .section-title-lg {
+        font-size: 36px;
+        line-height: 0.96;
+    }
 
-    .film-cell, .cell, .card, .obj-card, .join-card { min-height: auto; }
-    .cell-number, .obj-number { margin-bottom: 1.2rem; }
+    .section-title {
+        font-size: 29px;
+    }
 
-    [data-testid="stHorizontalBlock"] { flex-direction: column !important; gap: 1rem !important; }
+    .lead {
+        font-size: 16px;
+        line-height: 1.6;
+    }
 
-    a.btn { display: block; margin: 7px 0; text-align: center; }
-    .rule { margin: 2.2rem 0; }
+    .body-copy {
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    .grid-4,
+    .grid-3,
+    .grid-2,
+    .filmstrip {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .film-cell,
+    .cell,
+    .card,
+    .obj-card,
+    .join-card {
+        min-height: auto;
+    }
+
+    .cell-number,
+    .obj-number {
+        margin-bottom: 1.2rem;
+    }
+
+    [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
+    a.btn {
+        display: block;
+        margin: 7px 0;
+        text-align: center;
+    }
+
+    .rule {
+        margin: 2.2rem 0;
+    }
 }
 
 /* ---------- MOBILE PEQUENO ---------- */
 
 @media (max-width: 430px) {
-    .block-container { padding-left: 0.85rem; padding-right: 0.85rem; }
+    .block-container {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+    }
 
-    .hero-title { font-size: 37px; }
-    .section-title-lg { font-size: 32px; }
-    .section-title { font-size: 27px; }
-    .lead { font-size: 15px; }
+    .hero-title {
+        font-size: 37px;
+    }
 
-    .stats-grid { grid-template-columns: 1fr; }
-    .stat-value { font-size: 34px; }
+    .section-title-lg {
+        font-size: 32px;
+    }
 
-    .cell, .card, .obj-card, .join-card, .film-cell { padding: 18px; }
-    .cell-title { font-size: 21px; }
-    .obj-title { font-size: 23px; }
-    .film-title { font-size: 20px; }
+    .section-title {
+        font-size: 27px;
+    }
+
+    .lead {
+        font-size: 15px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-value {
+        font-size: 34px;
+    }
+
+    .cell,
+    .card,
+    .obj-card,
+    .join-card,
+    .film-cell {
+        padding: 18px;
+    }
+
+    .cell-title {
+        font-size: 21px;
+    }
+
+    .obj-title {
+        font-size: 23px;
+    }
+
+    .film-title {
+        font-size: 20px;
+    }
 }
 
 /* ---------- ACESSIBILIDADE ---------- */
 
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { transition: none !important; }
-    .cell:hover, .card:hover, .join-card:hover, .obj-card:hover { transform: none; }
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+
+    .cell:hover,
+    .card:hover,
+    .join-card:hover,
+    .obj-card:hover {
+        transform: none;
+    }
 }
 </style>
 """
 
 st.markdown(CSS, unsafe_allow_html=True)
+
+# ============================================================
+# FRAME TAB
+# ============================================================
+
+def frame_tab(content: str) -> None:
+    """Cria um espaço no topo quando chamada com conteúdo vazio."""
+    if content == "":
+        st.markdown(
+            '<div style="height: 40px;"></div>',
+            unsafe_allow_html=True,
+        )
+        return
+
+    st.markdown(content, unsafe_allow_html=True)
+
 
 frame_tab("")
 
@@ -715,9 +873,15 @@ with st.sidebar:
         """
     )
 
-    pagina = st.radio("Navegação", PAGINAS, label_visibility="collapsed", key="pagina")
+    pagina = st.radio(
+        "Navegação",
+        PAGINAS,
+        label_visibility="collapsed",
+        key="pagina",
+    )
 
     render('<div class="sidebar-label">Canais oficiais</div>')
+
     render(
         "".join(
             f'<a class="side-link" href="{esc(url, quote=True)}" '
@@ -727,6 +891,7 @@ with st.sidebar:
     )
 
     render('<div class="sidebar-label">Contato</div>')
+
     render(
         f'<a class="side-email" href="mailto:{esc(EMAIL_CONTATO, quote=True)}">'
         f"{esc(EMAIL_CONTATO)}</a>"
@@ -739,7 +904,11 @@ with st.sidebar:
 
 def pagina_projeto() -> None:
     render('<div class="eyebrow">Protocol One / ProtoCommunity</div>')
-    render('<div class="hero-title">Uma comunidade com disciplina de estúdio.</div>')
+
+    render(
+        '<div class="hero-title">Uma comunidade com disciplina de estúdio.</div>'
+    )
+
     render(
         """
         <div class="lead">
@@ -749,6 +918,7 @@ def pagina_projeto() -> None:
         </div>
         """
     )
+
     render('<div class="accent-line"></div>')
 
     stats = [
@@ -757,6 +927,7 @@ def pagina_projeto() -> None:
         (len(CANAIS), "Canais oficiais"),
         (len(PIPELINE), "Etapas do pipeline"),
     ]
+
     grid(
         "stats-grid",
         [
@@ -767,6 +938,7 @@ def pagina_projeto() -> None:
     )
 
     rule()
+
     render('<div class="section-title-lg">O que é a ProtoCommunity</div>')
 
     col1, col2 = st.columns(2)
@@ -780,6 +952,7 @@ def pagina_projeto() -> None:
                 A proposta une diferentes especialidades em torno de um
                 mesmo universo institucional.
             </div>
+
             <div class="body-copy">
                 O objetivo é criar um ambiente onde produção artística,
                 gestão, tecnologia, comunicação e estratégia possam trabalhar
@@ -789,12 +962,19 @@ def pagina_projeto() -> None:
         )
 
     with col2:
-        chips = "".join(f'<span class="chip">{esc(f)}</span>' for f in FRENTES)
+        chips = "".join(
+            f'<span class="chip">{esc(f)}</span>'
+            for f in FRENTES
+        )
+
         render(f'<div class="chip-row">{chips}</div>')
 
 
 def pagina_estrutura() -> None:
-    render('<div class="section-title-lg">Oito núcleos. Um só rumo.</div>')
+    render(
+        '<div class="section-title-lg">Oito núcleos. Um só rumo.</div>'
+    )
+
     render(
         """
         <div class="lead">
@@ -804,6 +984,7 @@ def pagina_estrutura() -> None:
         </div>
         """
     )
+
     spacer()
 
     grid(
@@ -817,7 +998,9 @@ def pagina_estrutura() -> None:
     )
 
     rule()
+
     render('<div class="section-title">Estrutura de Liderança</div>')
+
     render(
         """
         <div class="body-copy">
@@ -827,6 +1010,7 @@ def pagina_estrutura() -> None:
         </div>
         """
     )
+
     spacer(small=True)
 
     grid(
@@ -834,14 +1018,21 @@ def pagina_estrutura() -> None:
         [
             f'<div class="card"><div class="card-title">{esc(titulo)}</div>'
             f'<div class="role-row">'
-            + "".join(f'<span class="badge">{esc(c)}</span>' for c in cargos)
+            + "".join(
+                f'<span class="badge">{esc(c)}</span>'
+                for c in cargos
+            )
             + "</div></div>"
             for titulo, cargos in LIDERANCA
         ],
     )
 
     rule()
-    render('<div class="section-title">Conselho Consultivo e Deliberativo</div>')
+
+    render(
+        '<div class="section-title">Conselho Consultivo e Deliberativo</div>'
+    )
+
     render(
         """
         <div class="body-copy">
@@ -851,6 +1042,7 @@ def pagina_estrutura() -> None:
         </div>
         """
     )
+
     render(
         """
         <div class="chip-row">
@@ -860,6 +1052,7 @@ def pagina_estrutura() -> None:
         </div>
         """
     )
+
     spacer(small=True)
 
     grid(
@@ -873,7 +1066,10 @@ def pagina_estrutura() -> None:
 
 
 def pagina_objetivos() -> None:
-    render('<div class="section-title-lg">O que queremos construir.</div>')
+    render(
+        '<div class="section-title-lg">O que queremos construir.</div>'
+    )
+
     render(
         """
         <div class="lead">
@@ -883,6 +1079,7 @@ def pagina_objetivos() -> None:
         </div>
         """
     )
+
     spacer()
 
     grid(
@@ -896,7 +1093,11 @@ def pagina_objetivos() -> None:
     )
 
     rule()
-    render('<div class="section-title">Como uma ideia vira entrega</div>')
+
+    render(
+        '<div class="section-title">Como uma ideia vira entrega</div>'
+    )
+
     render(
         """
         <div class="body-copy">
@@ -906,6 +1107,7 @@ def pagina_objetivos() -> None:
         </div>
         """
     )
+
     spacer(small=True)
 
     grid(
@@ -920,7 +1122,10 @@ def pagina_objetivos() -> None:
 
 
 def pagina_participe() -> None:
-    render('<div class="section-title-lg">Faça parte da ProtoCommunity</div>')
+    render(
+        '<div class="section-title-lg">Faça parte da ProtoCommunity</div>'
+    )
+
     render(
         """
         <div class="lead">
@@ -929,6 +1134,7 @@ def pagina_participe() -> None:
         </div>
         """
     )
+
     spacer()
 
     grid(
@@ -942,7 +1148,9 @@ def pagina_participe() -> None:
     )
 
     rule()
+
     render('<div class="section-title">Como entrar</div>')
+
     render(
         """
         <div class="body-copy">
@@ -952,11 +1160,16 @@ def pagina_participe() -> None:
         """
     )
 
-    botoes = [link_button(nome, url) for nome, url in CANAIS.items()]
+    botoes = [
+        link_button(nome, url)
+        for nome, url in CANAIS.items()
+    ]
+
     botoes.append(
         f'<a class="btn ghost" href="mailto:{esc(EMAIL_CONTATO, quote=True)}">'
         "Enviar e-mail</a>"
     )
+
     render("".join(botoes))
 
 
