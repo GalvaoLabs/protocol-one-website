@@ -86,14 +86,23 @@ CSS = """
 
 /* ---------- BASE ---------- */
 
-*, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
-html, body, .stApp,
+html,
+body,
+.stApp,
 [data-testid="stAppViewContainer"],
 [data-testid="stMain"] {
     background:
-        radial-gradient(ellipse 60% 35% at 90% -5%, var(--glow), transparent 70%),
+        radial-gradient(
+            ellipse 60% 35% at 90% -5%,
+            var(--glow),
+            transparent 70%
+        ),
         var(--paper);
+
     font-family: "Space Grotesk", sans-serif;
     color: var(--ink);
 }
@@ -104,18 +113,26 @@ html, body, .stApp,
     padding: 2rem clamp(1rem, 4vw, 3rem) 4rem;
 }
 
-footer { visibility: hidden; }
+footer {
+    visibility: hidden;
+}
 
-.stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4 {
+.stMarkdown h1,
+.stMarkdown h2,
+.stMarkdown h3,
+.stMarkdown h4 {
     font-family: var(--display);
     color: var(--ink);
     text-transform: uppercase;
     letter-spacing: 0.02em;
 }
 
-.stMarkdown p { color: var(--ink-soft); }
+.stMarkdown p {
+    color: var(--ink-soft);
+}
 
-a:focus-visible, .stRadio label:focus-visible {
+a:focus-visible,
+.stRadio label:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
@@ -127,7 +144,21 @@ section[data-testid="stSidebar"] {
     border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-section[data-testid="stSidebar"] * { color: var(--on-graphite) !important; }
+section[data-testid="stSidebar"] * {
+    color: var(--on-graphite) !important;
+}
+
+/* Logo da Sidebar */
+
+section[data-testid="stSidebar"] [data-testid="stImage"] {
+    margin-bottom: 1rem;
+}
+
+section[data-testid="stSidebar"] [data-testid="stImage"] img {
+    max-width: 180px;
+    height: auto;
+    object-fit: contain;
+}
 
 .sidebar-logo {
     font-family: var(--display);
@@ -145,7 +176,9 @@ section[data-testid="stSidebar"] * { color: var(--on-graphite) !important; }
     margin-bottom: 2rem;
 }
 
-section[data-testid="stSidebar"] .sidebar-subtitle { color: var(--on-graphite-soft) !important; }
+section[data-testid="stSidebar"] .sidebar-subtitle {
+    color: var(--on-graphite-soft) !important;
+}
 
 .sidebar-label {
     font-size: 10px;
@@ -155,9 +188,12 @@ section[data-testid="stSidebar"] .sidebar-subtitle { color: var(--on-graphite-so
     margin: 1.5rem 0 0.65rem;
 }
 
-section[data-testid="stSidebar"] .sidebar-label { color: var(--accent) !important; }
+section[data-testid="stSidebar"] .sidebar-label {
+    color: var(--accent) !important;
+}
 
 /* Seletor mais específico para vencer o "section[...] *" acima */
+
 section[data-testid="stSidebar"] a.side-link {
     display: block;
     margin: 0 0 8px;
@@ -170,7 +206,10 @@ section[data-testid="stSidebar"] a.side-link {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.04em;
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 section[data-testid="stSidebar"] a.side-link:hover {
@@ -179,13 +218,17 @@ section[data-testid="stSidebar"] a.side-link:hover {
     color: #141414 !important;
 }
 
-/* Item selecionado do menu: âmbar em vez do vermelho padrão do Streamlit */
-section[data-testid="stSidebar"] label[data-baseweb="radio"]:has(input:checked) > div:first-child {
+/* Item selecionado do menu */
+
+section[data-testid="stSidebar"]
+label[data-baseweb="radio"]:has(input:checked)
+> div:first-child {
     background-color: var(--accent) !important;
     border-color: var(--accent) !important;
 }
 
-section[data-testid="stSidebar"] label[data-baseweb="radio"]:has(input:checked) {
+section[data-testid="stSidebar"]
+label[data-baseweb="radio"]:has(input:checked) {
     font-weight: 700;
 }
 
@@ -217,7 +260,9 @@ section[data-testid="stSidebar"] a.side-email {
     flex-shrink: 0;
 }
 
-.hero-title, .section-title-lg, .section-title {
+.hero-title,
+.section-title-lg,
+.section-title {
     font-family: var(--display);
     font-weight: 700;
     text-transform: uppercase;
@@ -233,33 +278,96 @@ section[data-testid="stSidebar"] a.side-email {
     margin-bottom: 1.25rem;
 }
 
-.section-title-lg { font-size: 50px; line-height: 0.95; margin-bottom: 1rem; }
-.section-title    { font-size: 36px; line-height: 1;    margin-bottom: 0.8rem; }
+.section-title-lg {
+    font-size: 50px;
+    line-height: 0.95;
+    margin-bottom: 1rem;
+}
 
-.lead      { font-size: 19px; line-height: 1.65; max-width: 850px; color: var(--ink-soft); }
-.body-copy { font-size: 16px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 1rem; }
+.section-title {
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 0.8rem;
+}
 
-.accent-line { width: 72px; height: 4px; background: var(--accent); margin: 1.5rem 0 2rem; }
-.rule        { height: 1px; width: 100%; background: var(--line); margin: 3rem 0; }
-.spacer      { height: 24px; }
-.spacer-sm   { height: 18px; }
+.lead {
+    font-size: 19px;
+    line-height: 1.65;
+    max-width: 850px;
+    color: var(--ink-soft);
+}
+
+.body-copy {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+}
+
+.accent-line {
+    width: 72px;
+    height: 4px;
+    background: var(--accent);
+    margin: 1.5rem 0 2rem;
+}
+
+.rule {
+    height: 1px;
+    width: 100%;
+    background: var(--line);
+    margin: 3rem 0;
+}
+
+.spacer {
+    height: 24px;
+}
+
+.spacer-sm {
+    height: 18px;
+}
 
 /* ---------- GRIDS ---------- */
 
-.grid-4, .grid-3, .grid-2, .filmstrip, .stats-grid {
+.grid-4,
+.grid-3,
+.grid-2,
+.filmstrip,
+.stats-grid {
     display: grid;
     width: 100%;
     gap: 14px;
     min-width: 0;
 }
 
-.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.filmstrip { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
-.stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 2.2rem; }
+.grid-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
 
-.cell, .card, .obj-card, .join-card, .film-cell, .stat {
+.grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.filmstrip {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 2.2rem;
+}
+
+.cell,
+.card,
+.obj-card,
+.join-card,
+.film-cell,
+.stat {
     min-width: 0;
     overflow-wrap: break-word;
     hyphens: auto;
@@ -273,7 +381,11 @@ section[data-testid="stSidebar"] a.side-email {
     border: 1px solid var(--line);
     border-radius: var(--radius);
     background: var(--surface);
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .cell:hover {
@@ -300,7 +412,11 @@ section[data-testid="stSidebar"] a.side-email {
     margin-bottom: 0.65rem;
 }
 
-.cell-text { color: var(--ink-soft); font-size: 13px; line-height: 1.55; }
+.cell-text {
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.55;
+}
 
 .card {
     min-height: 190px;
@@ -309,10 +425,16 @@ section[data-testid="stSidebar"] a.side-email {
     border-radius: var(--radius);
     background: var(--paper-card);
     box-shadow: var(--shadow);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
 
 .card-title {
     font-family: var(--display);
@@ -326,9 +448,21 @@ section[data-testid="stSidebar"] a.side-email {
 
 /* ---------- CHIPS / BADGES ---------- */
 
-.chip-row, .role-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; min-width: 0; }
+.chip-row,
+.role-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1rem;
+    min-width: 0;
+}
 
-.chip, .pill, .badge { max-width: 100%; overflow-wrap: break-word; }
+.chip,
+.pill,
+.badge {
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
 
 .chip {
     display: inline-block;
@@ -339,10 +473,16 @@ section[data-testid="stSidebar"] a.side-email {
     color: var(--ink);
     font-size: 12px;
     line-height: 1.25;
-    transition: border-color 0.2s ease, background 0.2s ease;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
 }
 
-.chip:hover { border-color: var(--accent); background: var(--accent-soft); }
+.chip:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
 
 .badge {
     display: inline-block;
@@ -378,10 +518,16 @@ section[data-testid="stSidebar"] a.side-email {
     background: var(--graphite-card);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: var(--shadow);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
 }
 
-.obj-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.obj-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
 
 .obj-card::after {
     content: "";
@@ -411,7 +557,11 @@ section[data-testid="stSidebar"] a.side-email {
     margin-bottom: 0.8rem;
 }
 
-.obj-text { color: var(--on-graphite-soft); font-size: 13px; line-height: 1.6; }
+.obj-text {
+    color: var(--on-graphite-soft);
+    font-size: 13px;
+    line-height: 1.6;
+}
 
 /* ---------- PIPELINE ---------- */
 
@@ -429,7 +579,12 @@ section[data-testid="stSidebar"] a.side-email {
     width: 100%;
     height: 4px;
     border-radius: 2px;
-    background: linear-gradient(90deg, var(--accent) 0 30%, var(--line) 30% 100%);
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent) 0 30%,
+            var(--line) 30% 100%
+        );
     margin-bottom: 20px;
 }
 
@@ -493,7 +648,11 @@ section[data-testid="stSidebar"] a.side-email {
     border-radius: var(--radius);
     background: var(--paper-card);
     box-shadow: var(--shadow);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .join-card:hover {
@@ -525,7 +684,7 @@ section[data-testid="stSidebar"] a.side-email {
     color: var(--ink-soft);
 }
 
-/* Botões da área principal */
+/* ---------- BOTÕES ---------- */
 
 a.btn {
     display: inline-block;
@@ -540,7 +699,11 @@ a.btn {
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 a.btn:hover {
@@ -734,8 +897,9 @@ st.markdown(CSS, unsafe_allow_html=True)
 # FRAME TAB
 # ============================================================
 
+
 def frame_tab(content: str) -> None:
-    """Cria um espaço no topo quando chamada com conteúdo vazio."""
+    """Cria espaço no topo quando recebe conteúdo vazio."""
     if content == "":
         st.markdown(
             '<div style="height: 40px;"></div>',
@@ -753,44 +917,142 @@ frame_tab("")
 # ============================================================
 
 NUCLEOS = [
-    ("01", "Administração e Diretoria", "Visão institucional, estratégia e coordenação geral de todas as áreas."),
-    ("02", "Conselho", "Fiscalização e deliberação colegiada sobre mudanças estruturais."),
-    ("03", "Jurídico e Propriedade Intelectual", "Proteção legal da obra, dos personagens e da própria organização."),
-    ("04", "Financeiro e Administrativo", "Recursos, orçamento e prestação de contas transparente."),
-    ("05", "Gestão de Pessoas", "Recrutamento, integração, desenvolvimento e mediação de conflitos."),
-    ("06", "Pré-produção", "Roteiro, universo, personagens, cenários e storyboard."),
-    ("07", "Arte, Animação e Pós-produção", "Concept art, ilustração, animação, edição, dublagem e som."),
-    ("08", "Marketing e Comunidade", "Redes sociais, parcerias, sugestões e relacionamento com o público."),
+    (
+        "01",
+        "Administração e Diretoria",
+        "Visão institucional, estratégia e coordenação geral de todas as áreas.",
+    ),
+    (
+        "02",
+        "Conselho",
+        "Fiscalização e deliberação colegiada sobre mudanças estruturais.",
+    ),
+    (
+        "03",
+        "Jurídico e Propriedade Intelectual",
+        "Proteção legal da obra, dos personagens e da própria organização.",
+    ),
+    (
+        "04",
+        "Financeiro e Administrativo",
+        "Recursos, orçamento e prestação de contas transparente.",
+    ),
+    (
+        "05",
+        "Gestão de Pessoas",
+        "Recrutamento, integração, desenvolvimento e mediação de conflitos.",
+    ),
+    (
+        "06",
+        "Pré-produção",
+        "Roteiro, universo, personagens, cenários e storyboard.",
+    ),
+    (
+        "07",
+        "Arte, Animação e Pós-produção",
+        "Concept art, ilustração, animação, edição, dublagem e som.",
+    ),
+    (
+        "08",
+        "Marketing e Comunidade",
+        "Redes sociais, parcerias, sugestões e relacionamento com o público.",
+    ),
 ]
 
 LIDERANCA = [
-    ("Direção Executiva", ["Direção-Geral", "Direção de Produção"]),
-    ("Núcleo Criativo", ["Direção Criativa", "Direção de Personagens", "Direção de Dublagem"]),
-    ("Arte e Produção Técnica", ["Direção de Arte", "Direção de Animação", "Direção de Pós-Produção"]),
-    ("Gestão, Marketing e Governança", ["Direção de Marketing", "Direção Financeira", "Direção Jurídica"]),
+    (
+        "Direção Executiva",
+        ["Direção-Geral", "Direção de Produção"],
+    ),
+    (
+        "Núcleo Criativo",
+        ["Direção Criativa", "Direção de Personagens", "Direção de Dublagem"],
+    ),
+    (
+        "Arte e Produção Técnica",
+        ["Direção de Arte", "Direção de Animação", "Direção de Pós-Produção"],
+    ),
+    (
+        "Gestão, Marketing e Governança",
+        ["Direção de Marketing", "Direção Financeira", "Direção Jurídica"],
+    ),
 ]
 
 CONSELHO = [
-    ("Fiscalização", "Acompanha as decisões e a operação da organização, verificando se tudo segue o que foi acordado."),
-    ("Governança", "Delibera sobre mudanças na estrutura e no direcionamento estratégico."),
-    ("Transparência", "Mantém o alinhamento ético e a cultura institucional vivos."),
+    (
+        "Fiscalização",
+        "Acompanha as decisões e a operação da organização, verificando se tudo segue o que foi acordado.",
+    ),
+    (
+        "Governança",
+        "Delibera sobre mudanças na estrutura e no direcionamento estratégico.",
+    ),
+    (
+        "Transparência",
+        "Mantém o alinhamento ético e a cultura institucional vivos.",
+    ),
 ]
 
 OBJETIVOS = [
-    ("01", "Conteúdo de alta qualidade", "Animações, HQs e produções audiovisuais que se destacam pelo cuidado criativo e técnico."),
-    ("02", "Comunidade escalável", "Processos profissionais e colaborativos que crescem junto com a organização."),
-    ("03", "Parcerias e alcance", "Parcerias estratégicas e expansão consistente da presença nas redes sociais."),
-    ("04", "Formação de talentos", "Oportunidades reais de desenvolvimento profissional dentro de universos ficcionais memoráveis."),
+    (
+        "01",
+        "Conteúdo de alta qualidade",
+        "Animações, HQs e produções audiovisuais que se destacam pelo cuidado criativo e técnico.",
+    ),
+    (
+        "02",
+        "Comunidade escalável",
+        "Processos profissionais e colaborativos que crescem junto com a organização.",
+    ),
+    (
+        "03",
+        "Parcerias e alcance",
+        "Parcerias estratégicas e expansão consistente da presença nas redes sociais.",
+    ),
+    (
+        "04",
+        "Formação de talentos",
+        "Oportunidades reais de desenvolvimento profissional dentro de universos ficcionais memoráveis.",
+    ),
 ]
 
+# PIPELINE = EXATAMENTE 7 ETAPAS
 PIPELINE = [
-    ("01", "Ideia e conceito", "Direção Criativa propõe; Diretoria aprova o conceito."),
-    ("02", "Roteiro", "Roteirista-Chefe escreve; Direção Criativa aprova."),
-    ("03", "Storyboard", "Transforma o roteiro em sequência visual de planos."),
-    ("04", "Animatic", "Valida timing e ritmo antes da animação completa."),
-    ("05", "Animação e som", "Cenas animadas, dublagem final e design de som."),
-    ("06", "Controle de qualidade", "Revisão final antes de qualquer publicação."),
-    ("07", "Publicação", "Marketing divulga somente o que passou pelo controle de qualidade."),
+    (
+        "01",
+        "Ideia e conceito",
+        "Direção Criativa propõe; Diretoria aprova o conceito.",
+    ),
+    (
+        "02",
+        "Roteiro",
+        "Roteirista-Chefe escreve; Direção Criativa aprova.",
+    ),
+    (
+        "03",
+        "Storyboard",
+        "Transforma o roteiro em sequência visual de planos.",
+    ),
+    (
+        "04",
+        "Animatic",
+        "Valida timing e ritmo antes da animação completa.",
+    ),
+    (
+        "05",
+        "Animação e som",
+        "Cenas animadas, dublagem final e design de som.",
+    ),
+    (
+        "06",
+        "Controle de qualidade",
+        "Revisão final antes de qualquer publicação.",
+    ),
+    (
+        "07",
+        "Publicação",
+        "Marketing divulga somente o que passou pelo controle de qualidade.",
+    ),
 ]
 
 FRENTES = [
@@ -809,12 +1071,21 @@ FRENTES = [
 ]
 
 PARTICIPE = [
-    ("Crie", "Contribua para projetos de animação, HQs e audiovisual de impacto real, dentro de um pipeline profissional."),
-    ("Cresça", "Desenvolva suas habilidades em um ambiente prático e colaborativo, trocando conhecimento com outros criativos."),
-    ("Conecte-se", "Faça parte de uma organização focada na construção de universos e fortalecimento de comunidade."),
+    (
+        "Crie",
+        "Contribua para projetos de animação, HQs e audiovisual de impacto real, dentro de um pipeline profissional.",
+    ),
+    (
+        "Cresça",
+        "Desenvolva suas habilidades em um ambiente prático e colaborativo, trocando conhecimento com outros criativos.",
+    ),
+    (
+        "Conecte-se",
+        "Faça parte de uma organização focada na construção de universos e fortalecimento de comunidade.",
+    ),
 ]
 
-# Links sem parâmetros de rastreamento (si, igsh, _r, _t).
+# Links sem parâmetros de rastreamento.
 CANAIS = {
     "YouTube": "https://youtube.com/@protocoloneoficial",
     "Instagram": "https://www.instagram.com/protocoloneofc",
@@ -823,7 +1094,12 @@ CANAIS = {
 
 EMAIL_CONTATO = "protocolonecontato@gmail.com"
 
-PAGINAS = ["O Projeto", "Estrutura", "Objetivos", "Participe"]
+PAGINAS = [
+    "O Projeto",
+    "Estrutura",
+    "Objetivos",
+    "Participe",
+]
 
 # ============================================================
 # HELPERS
@@ -837,12 +1113,22 @@ def render(html: str) -> None:
     e linhas em branco encerram blocos HTML. Por isso o HTML é compactado
     em uma única linha antes de ser enviado.
     """
-    compact = " ".join(line.strip() for line in html.splitlines() if line.strip())
-    st.markdown(compact, unsafe_allow_html=True)
+    compact = " ".join(
+        line.strip()
+        for line in html.splitlines()
+        if line.strip()
+    )
+
+    st.markdown(
+        compact,
+        unsafe_allow_html=True,
+    )
 
 
 def spacer(small: bool = False) -> None:
-    render(f'<div class="{"spacer-sm" if small else "spacer"}"></div>')
+    render(
+        f'<div class="{"spacer-sm" if small else "spacer"}"></div>'
+    )
 
 
 def rule() -> None:
@@ -850,14 +1136,22 @@ def rule() -> None:
 
 
 def grid(css_class: str, items: list[str]) -> None:
-    render(f'<div class="{css_class}">{"".join(items)}</div>')
+    render(
+        f'<div class="{css_class}">{"".join(items)}</div>'
+    )
 
 
-def link_button(label: str, url: str, ghost: bool = False) -> str:
+def link_button(
+    label: str,
+    url: str,
+    ghost: bool = False,
+) -> str:
     cls = "btn ghost" if ghost else "btn"
+
     return (
         f'<a class="{cls}" href="{esc(url, quote=True)}" '
-        f'target="_blank" rel="noopener noreferrer">{esc(label)}</a>'
+        f'target="_blank" rel="noopener noreferrer">'
+        f"{esc(label)}</a>"
     )
 
 
@@ -866,6 +1160,10 @@ def link_button(label: str, url: str, ghost: bool = False) -> str:
 # ============================================================
 
 with st.sidebar:
+
+    # Logo oficial do projeto
+    st.image("logo.png", use_container_width=True)
+
     render(
         """
         <div class="sidebar-logo">PROTOCOL<br>ONE</div>
@@ -880,20 +1178,26 @@ with st.sidebar:
         key="pagina",
     )
 
-    render('<div class="sidebar-label">Canais oficiais</div>')
+    render(
+        '<div class="sidebar-label">Canais oficiais</div>'
+    )
 
     render(
         "".join(
             f'<a class="side-link" href="{esc(url, quote=True)}" '
-            f'target="_blank" rel="noopener noreferrer">{esc(nome)}</a>'
+            f'target="_blank" rel="noopener noreferrer">'
+            f"{esc(nome)}</a>"
             for nome, url in CANAIS.items()
         )
     )
 
-    render('<div class="sidebar-label">Contato</div>')
+    render(
+        '<div class="sidebar-label">Contato</div>'
+    )
 
     render(
-        f'<a class="side-email" href="mailto:{esc(EMAIL_CONTATO, quote=True)}">'
+        f'<a class="side-email" '
+        f'href="mailto:{esc(EMAIL_CONTATO, quote=True)}">'
         f"{esc(EMAIL_CONTATO)}</a>"
     )
 
@@ -903,10 +1207,17 @@ with st.sidebar:
 
 
 def pagina_projeto() -> None:
-    render('<div class="eyebrow">Protocol One / ProtoCommunity</div>')
 
     render(
-        '<div class="hero-title">Uma comunidade com disciplina de estúdio.</div>'
+        '<div class="eyebrow">'
+        'Protocol One / ProtoCommunity'
+        '</div>'
+    )
+
+    render(
+        '<div class="hero-title">'
+        'Uma comunidade com disciplina de estúdio.'
+        '</div>'
     )
 
     render(
@@ -919,7 +1230,18 @@ def pagina_projeto() -> None:
         """
     )
 
-    render('<div class="accent-line"></div>')
+    render(
+        '<div class="accent-line"></div>'
+    )
+
+    # 4 métricas:
+    # 1. Núcleos
+    # 2. Frentes
+    # 3. Canais
+    # 4. Etapas do pipeline
+    #
+    # O valor do pipeline é calculado dinamicamente com len(PIPELINE),
+    # garantindo que permaneça sincronizado com as 7 etapas reais.
 
     stats = [
         (len(NUCLEOS), "Núcleos organizacionais"),
@@ -931,19 +1253,26 @@ def pagina_projeto() -> None:
     grid(
         "stats-grid",
         [
-            f'<div class="stat"><div class="stat-value">{valor:02d}</div>'
-            f'<div class="stat-label">{esc(label)}</div></div>'
+            f'<div class="stat">'
+            f'<div class="stat-value">{valor:02d}</div>'
+            f'<div class="stat-label">{esc(label)}</div>'
+            f'</div>'
             for valor, label in stats
         ],
     )
 
     rule()
 
-    render('<div class="section-title-lg">O que é a ProtoCommunity</div>')
+    render(
+        '<div class="section-title-lg">'
+        'O que é a ProtoCommunity'
+        '</div>'
+    )
 
     col1, col2 = st.columns(2)
 
     with col1:
+
         render(
             """
             <div class="body-copy">
@@ -962,17 +1291,23 @@ def pagina_projeto() -> None:
         )
 
     with col2:
+
         chips = "".join(
             f'<span class="chip">{esc(f)}</span>'
             for f in FRENTES
         )
 
-        render(f'<div class="chip-row">{chips}</div>')
+        render(
+            f'<div class="chip-row">{chips}</div>'
+        )
 
 
 def pagina_estrutura() -> None:
+
     render(
-        '<div class="section-title-lg">Oito núcleos. Um só rumo.</div>'
+        '<div class="section-title-lg">'
+        'Oito núcleos. Um só rumo.'
+        '</div>'
     )
 
     render(
@@ -990,16 +1325,22 @@ def pagina_estrutura() -> None:
     grid(
         "grid-4",
         [
-            f'<div class="cell"><div class="cell-number">{esc(n)}</div>'
+            f'<div class="cell">'
+            f'<div class="cell-number">{esc(n)}</div>'
             f'<div class="cell-title">{esc(t)}</div>'
-            f'<div class="cell-text">{esc(d)}</div></div>'
+            f'<div class="cell-text">{esc(d)}</div>'
+            f'</div>'
             for n, t, d in NUCLEOS
         ],
     )
 
     rule()
 
-    render('<div class="section-title">Estrutura de Liderança</div>')
+    render(
+        '<div class="section-title">'
+        'Estrutura de Liderança'
+        '</div>'
+    )
 
     render(
         """
@@ -1016,7 +1357,8 @@ def pagina_estrutura() -> None:
     grid(
         "grid-4",
         [
-            f'<div class="card"><div class="card-title">{esc(titulo)}</div>'
+            f'<div class="card">'
+            f'<div class="card-title">{esc(titulo)}</div>'
             f'<div class="role-row">'
             + "".join(
                 f'<span class="badge">{esc(c)}</span>'
@@ -1030,7 +1372,9 @@ def pagina_estrutura() -> None:
     rule()
 
     render(
-        '<div class="section-title">Conselho Consultivo e Deliberativo</div>'
+        '<div class="section-title">'
+        'Conselho Consultivo e Deliberativo'
+        '</div>'
     )
 
     render(
@@ -1058,16 +1402,21 @@ def pagina_estrutura() -> None:
     grid(
         "grid-3",
         [
-            f'<div class="cell"><div class="cell-title">{esc(t)}</div>'
-            f'<div class="cell-text">{esc(d)}</div></div>'
+            f'<div class="cell">'
+            f'<div class="cell-title">{esc(t)}</div>'
+            f'<div class="cell-text">{esc(d)}</div>'
+            f'</div>'
             for t, d in CONSELHO
         ],
     )
 
 
 def pagina_objetivos() -> None:
+
     render(
-        '<div class="section-title-lg">O que queremos construir.</div>'
+        '<div class="section-title-lg">'
+        'O que queremos construir.'
+        '</div>'
     )
 
     render(
@@ -1085,9 +1434,11 @@ def pagina_objetivos() -> None:
     grid(
         "grid-4",
         [
-            f'<div class="obj-card"><div class="obj-number">{esc(n)}</div>'
+            f'<div class="obj-card">'
+            f'<div class="obj-number">{esc(n)}</div>'
             f'<div class="obj-title">{esc(t)}</div>'
-            f'<div class="obj-text">{esc(d)}</div></div>'
+            f'<div class="obj-text">{esc(d)}</div>'
+            f'</div>'
             for n, t, d in OBJETIVOS
         ],
     )
@@ -1095,7 +1446,9 @@ def pagina_objetivos() -> None:
     rule()
 
     render(
-        '<div class="section-title">Como uma ideia vira entrega</div>'
+        '<div class="section-title">'
+        'Como uma ideia vira entrega'
+        '</div>'
     )
 
     render(
@@ -1110,20 +1463,27 @@ def pagina_objetivos() -> None:
 
     spacer(small=True)
 
+    # PIPELINE possui exatamente 7 etapas.
+    # O CSS também utiliza 7 colunas no desktop.
     grid(
         "filmstrip",
         [
-            f'<div class="film-cell"><div class="film-number">{esc(n)}</div>'
+            f'<div class="film-cell">'
+            f'<div class="film-number">{esc(n)}</div>'
             f'<div class="film-title">{esc(t)}</div>'
-            f'<div class="film-text">{esc(d)}</div></div>'
+            f'<div class="film-text">{esc(d)}</div>'
+            f'</div>'
             for n, t, d in PIPELINE
         ],
     )
 
 
 def pagina_participe() -> None:
+
     render(
-        '<div class="section-title-lg">Faça parte da ProtoCommunity</div>'
+        '<div class="section-title-lg">'
+        'Faça parte da ProtoCommunity'
+        '</div>'
     )
 
     render(
@@ -1140,16 +1500,22 @@ def pagina_participe() -> None:
     grid(
         "grid-3",
         [
-            f'<div class="join-card"><div class="join-symbol">◈</div>'
+            f'<div class="join-card">'
+            f'<div class="join-symbol">◈</div>'
             f'<div class="join-title">{esc(t)}</div>'
-            f'<div class="join-text">{esc(d)}</div></div>'
+            f'<div class="join-text">{esc(d)}</div>'
+            f'</div>'
             for t, d in PARTICIPE
         ],
     )
 
     rule()
 
-    render('<div class="section-title">Como entrar</div>')
+    render(
+        '<div class="section-title">'
+        'Como entrar'
+        '</div>'
+    )
 
     render(
         """
@@ -1166,11 +1532,14 @@ def pagina_participe() -> None:
     ]
 
     botoes.append(
-        f'<a class="btn ghost" href="mailto:{esc(EMAIL_CONTATO, quote=True)}">'
+        f'<a class="btn ghost" '
+        f'href="mailto:{esc(EMAIL_CONTATO, quote=True)}">'
         "Enviar e-mail</a>"
     )
 
-    render("".join(botoes))
+    render(
+        "".join(botoes)
+    )
 
 
 # ============================================================
