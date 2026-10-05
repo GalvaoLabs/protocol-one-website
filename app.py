@@ -650,30 +650,6 @@ st.markdown(
         border-color: var(--navy);
     }
 
-    .contact-box {
-        padding: 20px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.55);
-        margin-top: 1.2rem;
-    }
-
-    .contact-label {
-        color: var(--teal);
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.13em;
-        text-transform: uppercase;
-        margin-bottom: 0.45rem;
-    }
-
-    .contact-email {
-        color: var(--ink);
-        font-size: 15px;
-        font-weight: 600;
-        overflow-wrap: anywhere;
-        word-break: break-word;
-    }
-
     /* ========================================================
        STREAMLIT
        ======================================================== */
@@ -1491,8 +1467,7 @@ elif pagina == "Participe":
             <div class="join-symbol">◈</div>
             <div class="join-title">Crie</div>
             <div class="join-text">
-                Contribua para projetos de animação, HQs e audiovisual
-                de impacto real, dentro de um pipeline profissional.
+                Contribua para projetos de animação, HQs e audiovisual de impacto real, dentro de um pipeline profissional.
             </div>
         </div>
 
@@ -1500,8 +1475,7 @@ elif pagina == "Participe":
             <div class="join-symbol">◈</div>
             <div class="join-title">Cresça</div>
             <div class="join-text">
-                Desenvolva suas habilidades em um ambiente prático
-                e colaborativo, trocando conhecimento com outros criativos.
+                Desenvolva suas habilidades em um ambiente prático e colaborativo, trocando conhecimento com outros criativos.
             </div>
         </div>
 
@@ -1509,8 +1483,7 @@ elif pagina == "Participe":
             <div class="join-symbol">◈</div>
             <div class="join-title">Conecte-se</div>
             <div class="join-text">
-                Faça parte de uma organização focada na construção
-                de universos e fortalecimento de comunidade.
+                Faça parte de uma organização focada na construção de universos e fortalecimento de comunidade.
             </div>
         </div>
 
@@ -1519,82 +1492,5 @@ elif pagina == "Participe":
 
     st.markdown(
         participar_html,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        '<div class="rule"></div>',
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        '<div class="section-title">Canais oficiais</div>',
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        """
-        <div class="body-copy">
-            Acompanhe o desenvolvimento do Protocol One e conheça
-            os próximos projetos, produções e iniciativas da comunidade.
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        '<div style="height:12px;"></div>',
-        unsafe_allow_html=True,
-    )
-
-    canais_html = ""
-
-    for nome, url in CANAIS.items():
-
-        canais_html += f"""
-        <a
-            class="channel-btn"
-            href="{url}"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            {nome}
-        </a>
-        """
-
-    st.markdown(
-        canais_html,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        """
-        <div class="contact-box">
-
-            <div class="contact-label">
-                Contato institucional
-            </div>
-
-            <div class="contact-email">
-                protocolonecontato@gmail.com
-            </div>
-
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        '<div style="height:10px;"></div>',
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        """
-        <div class="body-copy">
-            Criadores, parceiros, imprensa e apoiadores interessados
-            podem entrar em contato diretamente pelo canal institucional.
-        </div>
-        """,
         unsafe_allow_html=True,
     )
