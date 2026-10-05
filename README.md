@@ -6,7 +6,7 @@ Site institucional desenvolvido em **Python + Streamlit** para apresentar a estr
 
 O projeto faz parte do portfólio de **Miguel Henrique** ([GalvaoLabs](https://github.com/GalvaoLabs)), sendo um trabalho de desenvolvimento web realizado para uma organização/projeto de terceiros.
 
-> **Importante:** o desenvolvimento deste website é de responsabilidade de Miguel Henrique, sob a identidade **GalvaoLabs**. A GalvaoLabs não é proprietária nem responsável pela gestão do Protocol One / ProtoCommunity.
+> **Importante:** Miguel Henrique / GalvaoLabs é responsável pelo desenvolvimento técnico deste website. A GalvaoLabs não é proprietária nem responsável pela gestão do Protocol One / ProtoCommunity.
 
 ---
 
@@ -78,13 +78,13 @@ Protocol-One/
 Arquivo principal da aplicação. Contém a estrutura do site, navegação, dados institucionais, componentes e estilos personalizados.
 
 **`logo.png`**  
-Logotipo utilizado na Sidebar da aplicação.
+Logotipo utilizado na Sidebar da aplicação. O arquivo é um material relacionado à identidade visual do Protocol One / ProtoCommunity.
 
 **`requirements.txt`**  
 Lista de dependências necessárias para executar o projeto.
 
 **`LICENSE`**  
-Define os termos de licenciamento do código deste repositório.
+Define os direitos e as restrições aplicáveis ao código desenvolvido neste repositório, além de esclarecer a propriedade dos materiais pertencentes ao Protocol One / ProtoCommunity.
 
 **`README.md`**  
 Documentação técnica e contextualização do projeto.
@@ -175,9 +175,9 @@ O projeto pode ser hospedado utilizando serviços compatíveis com aplicações 
 
 ### Streamlit Community Cloud
 
-É uma das opções mais simples para publicar a aplicação diretamente a partir de um repositório GitHub.
+O Streamlit Community Cloud é uma opção simples para publicar aplicações Streamlit diretamente a partir de um repositório GitHub.
 
-O fluxo básico é:
+Fluxo básico:
 
 1. Publicar o projeto no GitHub;
 2. Acessar o Streamlit Community Cloud;
@@ -226,17 +226,33 @@ A estrutura pode ser modificada conforme as necessidades do projeto.
 
 ## Responsabilidade e autoria
 
-Este repositório documenta o **desenvolvimento técnico do website**.
+Este repositório reúne o **desenvolvimento técnico do website** e materiais necessários para sua apresentação e funcionamento.
+
+### Miguel Henrique / GalvaoLabs
+
+Responsável pelo **desenvolvimento, implementação e estrutura técnica** da aplicação presente neste repositório.
+
+O código-fonte desenvolvido especificamente para a aplicação é de autoria de **Miguel Henrique / GalvaoLabs**, conforme os termos estabelecidos na [LICENSE](LICENSE).
 
 ### Protocol One / ProtoCommunity
 
-É a organização/projeto apresentado pelo website e responsável pelo conteúdo institucional representado na aplicação.
+O **Protocol One / ProtoCommunity** é o projeto apresentado pelo website.
 
-### Miguel Henrique — GalvaoLabs
+Seu nome, marca, logotipos, textos institucionais, informações organizacionais, conceitos e demais materiais criativos ou institucionais relacionados não são propriedade de Miguel Henrique ou da GalvaoLabs.
 
-Responsável pelo **desenvolvimento, implementação e estrutura técnica do website** presente neste repositório.
+Esses materiais permanecem pertencentes aos seus respectivos titulares e não são licenciados pela licença deste repositório.
 
-A utilização de nomes, marcas, conceitos ou informações relacionados ao Protocol One / ProtoCommunity neste projeto não significa que Miguel Henrique ou a GalvaoLabs sejam proprietários da organização.
+> A presença de materiais do Protocol One / ProtoCommunity neste repositório não concede autorização para sua reprodução, modificação ou redistribuição.
+
+---
+
+## Licença
+
+O **código-fonte desenvolvido por Miguel Henrique / GalvaoLabs** está sujeito aos termos definidos no arquivo [LICENSE](LICENSE).
+
+Materiais pertencentes ao Protocol One / ProtoCommunity, incluindo sua marca, identidade visual e conteúdo institucional, permanecem sujeitos aos direitos de seus respectivos titulares.
+
+Consulte a [LICENSE](LICENSE) para obter as condições completas.
 
 ---
 
@@ -244,7 +260,7 @@ A utilização de nomes, marcas, conceitos ou informações relacionados ao Prot
 
 A **GalvaoLabs** é a identidade utilizada por Miguel Henrique para reunir projetos, estudos e experimentos relacionados a tecnologia, programação e desenvolvimento.
 
-O repositório do projeto pode ser encontrado no GitHub:
+Conheça outros projetos no GitHub:
 
 **[github.com/GalvaoLabs](https://github.com/GalvaoLabs)**
 
