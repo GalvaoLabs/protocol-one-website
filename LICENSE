@@ -1,16 +1,35 @@
-Copyright (c) 2026 ProtoCommunity / Protocol One. Todos os direitos reservados.
+Copyright (c) 2026 Miguel Henrique / GalvaoLabs
 
-Este repositÃ³rio e todo o seu conteÃºdo â€” incluindo, mas nÃ£o se limitando a, cÃ³digo-fonte,
-textos, estrutura organizacional, nome "Protocol One", marca "ProtoCommunity" e qualquer
-material criativo associado â€” sÃ£o de propriedade exclusiva da ProtoCommunity.
+Todos os direitos reservados.
 
-Nenhuma parte deste repositÃ³rio pode ser copiada, reproduzida, distribuÃ­da, modificada ou
-utilizada para criar trabalhos derivados, no todo ou em parte, sem autorizaÃ§Ã£o prÃ©via e por
-escrito da Diretoria da ProtoCommunity.
+## 1. Código-fonte
 
-O cÃ³digo Ã© disponibilizado neste repositÃ³rio apenas para fins de hospedagem, implantaÃ§Ã£o e
-manutenÃ§Ã£o do site oficial da ProtoCommunity. O acesso ao cÃ³digo-fonte nÃ£o constitui
-licenÃ§a de uso, cÃ³pia ou redistribuiÃ§Ã£o.
+O código-fonte presente neste repositório, incluindo `app.py` e demais elementos técnicos desenvolvidos especificamente para a aplicação, foi desenvolvido por **Miguel Henrique**, sob a identidade **GalvaoLabs**.
 
-Para solicitar autorizaÃ§Ã£o de uso, licenciamento de material ou parcerias, entre em contato
-pelo e-mail oficial: protocolonecontato@gmail.com
+Salvo autorização expressa por escrito, nenhuma parte do código-fonte poderá ser copiada, reproduzida, redistribuída, modificada ou utilizada para criar trabalhos derivados.
+
+O código é disponibilizado publicamente neste repositório para fins de portfólio, demonstração técnica, hospedagem e manutenção do website desenvolvido para a ProtoCommunity / Protocol One.
+
+O acesso ao código-fonte não constitui concessão de licença para reutilização, redistribuição ou criação de trabalhos derivados.
+
+## 2. Materiais e propriedade do Protocol One
+
+O nome **Protocol One**, a marca **ProtoCommunity**, logotipos, textos institucionais, informações organizacionais, conceitos, personagens e demais materiais criativos ou institucionais relacionados ao Protocol One / ProtoCommunity não são propriedade de Miguel Henrique ou da GalvaoLabs.
+
+Esses materiais permanecem de propriedade de seus respectivos titulares e não são licenciados por esta licença.
+
+A presença desses materiais neste repositório não concede qualquer direito de uso, reprodução, modificação ou redistribuição sobre eles.
+
+## 3. Limitação da licença
+
+Esta licença se aplica ao código e aos elementos técnicos desenvolvidos por Miguel Henrique / GalvaoLabs.
+
+Ela não concede direitos sobre marcas, nomes, conteúdos, imagens, logotipos ou outros materiais pertencentes ao Protocol One / ProtoCommunity ou a terceiros.
+
+## 4. Autorizações
+
+Solicitações relacionadas ao uso do código desenvolvido pela GalvaoLabs, bem como solicitações referentes aos materiais institucionais do Protocol One / ProtoCommunity, devem ser encaminhadas aos respectivos responsáveis.
+
+Para assuntos relacionados ao Protocol One / ProtoCommunity:
+
+**protocolonecontato@gmail.com**
