@@ -734,7 +734,6 @@ with st.sidebar:
 # PÁGINAS
 # ============================================================
 
-
 def pagina_projeto() -> None:
     frame_tab("")
     render('<div class="eyebrow">Protocol One / ProtoCommunity</div>')
@@ -766,6 +765,7 @@ def pagina_projeto() -> None:
     )
 
     rule()
+    frame_tab("")
     render('<div class="section-title-lg">O que é a ProtoCommunity</div>')
 
     col1, col2 = st.columns(2)
