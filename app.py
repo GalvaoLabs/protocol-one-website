@@ -47,6 +47,42 @@ CSS = """
     --shadow: 0 10px 30px rgba(10, 38, 48, 0.08);
     --shadow-hover: 0 14px 34px rgba(10, 38, 48, 0.14);
     --display: "Big Shoulders Display", sans-serif;
+
+    /* Papéis semânticos: mudam entre claro e escuro */
+    --heading-accent: var(--navy);
+    --btn-bg: var(--navy);
+    --teal-text: var(--teal);
+    --gold-text: var(--gold-deep);
+    --surface: rgba(255, 255, 255, 0.62);
+    --glow: rgba(95, 208, 200, 0.14);
+
+    color-scheme: light dark;
+}
+
+/* ---------- TEMA ESCURO NATIVO ---------- */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --paper: #0C1A20;
+        --paper-card: #14282F;
+
+        --ink: #EAF1F0;
+        --ink-soft: #A9BDC0;
+
+        --teal-soft: rgba(95, 208, 200, 0.13);
+
+        --line: rgba(255, 255, 255, 0.12);
+        --line-strong: rgba(255, 255, 255, 0.26);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        --shadow-hover: 0 14px 34px rgba(0, 0, 0, 0.5);
+
+        --heading-accent: #9ADAD6;
+        --btn-bg: #1F7A80;
+        --teal-text: #5FD0C8;
+        --gold-text: #D4A64A;
+        --surface: rgba(255, 255, 255, 0.04);
+        --glow: rgba(95, 208, 200, 0.08);
+    }
 }
 
 /* ---------- BASE ---------- */
@@ -57,7 +93,7 @@ html, body, .stApp,
 [data-testid="stAppViewContainer"],
 [data-testid="stMain"] {
     background:
-        radial-gradient(ellipse 70% 40% at 85% -5%, rgba(95, 208, 200, 0.14), transparent 70%),
+        radial-gradient(ellipse 70% 40% at 85% -5%, var(--glow), transparent 70%),
         var(--paper);
     font-family: "Space Grotesk", sans-serif;
     color: var(--ink);
@@ -145,6 +181,16 @@ section[data-testid="stSidebar"] a.side-link:hover {
     color: var(--navy-deep) !important;
 }
 
+/* Item selecionado do menu: dourado em vez do vermelho padrão do Streamlit */
+section[data-testid="stSidebar"] label[data-baseweb="radio"]:has(input:checked) > div:first-child {
+    background-color: var(--gold) !important;
+    border-color: var(--gold) !important;
+}
+
+section[data-testid="stSidebar"] label[data-baseweb="radio"]:has(input:checked) {
+    font-weight: 700;
+}
+
 section[data-testid="stSidebar"] a.side-email {
     font-size: 12px;
     overflow-wrap: anywhere;
@@ -157,7 +203,7 @@ section[data-testid="stSidebar"] a.side-email {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--teal);
+    color: var(--teal-text);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -202,8 +248,8 @@ section[data-testid="stSidebar"] a.side-email {
     margin-bottom: 1rem;
     border: 1px solid var(--line-strong);
     border-radius: 4px;
-    color: var(--teal);
-    background: rgba(255, 255, 255, 0.55);
+    color: var(--teal-text);
+    background: var(--surface);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.13em;
@@ -242,7 +288,7 @@ section[data-testid="stSidebar"] a.side-email {
     min-height: 180px;
     padding: 20px;
     border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.62);
+    background: var(--surface);
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -253,7 +299,7 @@ section[data-testid="stSidebar"] a.side-email {
 }
 
 .cell-number, .obj-number {
-    color: var(--gold-deep);
+    color: var(--gold-text);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -305,7 +351,7 @@ section[data-testid="stSidebar"] a.side-email {
     border: 1px solid var(--line);
     border-radius: 999px;
     background: var(--paper-card);
-    color: var(--navy);
+    color: var(--heading-accent);
     font-size: 12px;
     line-height: 1.25;
 }
@@ -318,7 +364,7 @@ section[data-testid="stSidebar"] a.side-email {
     border-radius: 4px;
     background: var(--teal-soft);
     border: 1px solid rgba(31, 122, 128, 0.22);
-    color: var(--teal);
+    color: var(--teal-text);
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
@@ -394,7 +440,7 @@ section[data-testid="stSidebar"] a.side-email {
     margin-bottom: 20px;
 }
 
-.film-number { font-size: 10px; color: var(--teal); font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.3rem; }
+.film-number { font-size: 10px; color: var(--teal-text); font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.3rem; }
 
 .film-title {
     font-family: var(--display);
@@ -417,7 +463,7 @@ section[data-testid="stSidebar"] a.side-email {
     font-size: 38px;
     line-height: 0.9;
     font-weight: 700;
-    color: var(--navy);
+    color: var(--heading-accent);
     margin-bottom: 0.7rem;
 }
 
@@ -461,9 +507,9 @@ a.btn {
     display: inline-block;
     margin: 4px 8px 4px 0;
     padding: 12px 18px;
-    border: 1px solid var(--navy);
+    border: 1px solid var(--btn-bg);
     border-radius: 4px;
-    background: var(--navy);
+    background: var(--btn-bg);
     color: #FFFFFF !important;
     text-decoration: none !important;
     font-size: 12px;
@@ -475,8 +521,8 @@ a.btn {
 
 a.btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy-deep) !important; }
 
-a.btn.ghost { background: transparent; color: var(--navy) !important; }
-a.btn.ghost:hover { background: var(--navy); border-color: var(--navy); color: #FFFFFF !important; }
+a.btn.ghost { background: transparent; color: var(--heading-accent) !important; border-color: var(--line-strong); }
+a.btn.ghost:hover { background: var(--btn-bg); border-color: var(--btn-bg); color: #FFFFFF !important; }
 
 /* ---------- STREAMLIT ---------- */
 
@@ -697,6 +743,7 @@ with st.sidebar:
 
 
 def pagina_projeto() -> None:
+    frame_tab("Quadro 00 — Abertura")
     render('<div class="eyebrow">Protocol One / ProtoCommunity</div>')
     render('<div class="hero-title">Uma comunidade com disciplina de estúdio.</div>')
     render(
@@ -754,6 +801,7 @@ def pagina_projeto() -> None:
 
 
 def pagina_estrutura() -> None:
+    frame_tab("Quadro 02 — Estrutura")
     render('<div class="section-title-lg">Oito núcleos. Um só rumo.</div>')
     render(
         """
@@ -833,6 +881,7 @@ def pagina_estrutura() -> None:
 
 
 def pagina_objetivos() -> None:
+    frame_tab("Quadro 03 — Objetivos")
     render('<div class="section-title-lg">O que queremos construir.</div>')
     render(
         """
@@ -880,6 +929,7 @@ def pagina_objetivos() -> None:
 
 
 def pagina_participe() -> None:
+    frame_tab("Quadro 04 — Participe")
     render('<div class="section-title-lg">Faça parte da ProtoCommunity</div>')
     render(
         """
