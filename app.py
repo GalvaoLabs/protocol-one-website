@@ -588,6 +588,8 @@ a.btn.ghost:hover { background: var(--btn-bg); border-color: var(--btn-bg); colo
 
 st.markdown(CSS, unsafe_allow_html=True)
 
+frame_tab("")
+
 # ============================================================
 # DADOS
 # ============================================================
