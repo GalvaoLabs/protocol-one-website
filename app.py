@@ -734,8 +734,8 @@ with st.sidebar:
 # PÁGINAS
 # ============================================================
 
+
 def pagina_projeto() -> None:
-    frame_tab("")
     render('<div class="eyebrow">Protocol One / ProtoCommunity</div>')
     render('<div class="hero-title">Uma comunidade com disciplina de estúdio.</div>')
     render(
@@ -765,7 +765,6 @@ def pagina_projeto() -> None:
     )
 
     rule()
-    frame_tab("")
     render('<div class="section-title-lg">O que é a ProtoCommunity</div>')
 
     col1, col2 = st.columns(2)
@@ -793,7 +792,6 @@ def pagina_projeto() -> None:
 
 
 def pagina_estrutura() -> None:
-    frame_tab("")
     render('<div class="section-title-lg">Oito núcleos. Um só rumo.</div>')
     render(
         """
@@ -873,7 +871,6 @@ def pagina_estrutura() -> None:
 
 
 def pagina_objetivos() -> None:
-    frame_tab("")
     render('<div class="section-title-lg">O que queremos construir.</div>')
     render(
         """
@@ -921,7 +918,6 @@ def pagina_objetivos() -> None:
 
 
 def pagina_participe() -> None:
-    frame_tab("")
     render('<div class="section-title-lg">Faça parte da ProtoCommunity</div>')
     render(
         """
